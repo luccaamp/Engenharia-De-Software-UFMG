@@ -6,7 +6,7 @@ Departamento de Ciência da Computação – Universidade Federal de Minas Gerai
 
 O objetivo deste projeto é desenvolver uma plataforma para a gestão de notas, tarefas e atividades das disciplinas da universidade. A plataforma permitirá que os alunos organizem seu desempenho acadêmico, acompanhem prazos das provas e entregáveis e visualizem suas notas graficamente.
 
-As principais features estão destacadas abaixo:
+As principais features estão destacadas abaixo.
 
 **Gerenciamento de Disciplinas:** Adição, edição e remoção de disciplinas; Associação de notas, tarefas e atividades a cada disciplina; Organização por semestre ou período letivo.
 
@@ -26,3 +26,8 @@ As principais features estão destacadas abaixo:
 **Lucas Rafael Costa Santos:** Atua tanto no frontend quanto no backend, integrando a interface do usuário com a lógica do servidor e banco de dados.
 
 **Lucca Alvarenga de Magalhães Pinto:** Responsável pelo backend da plataforma e no gerenciamento dos entregáveis.
+
+## Tecnologias Utilizadas  
+
+Para o frontend da plataforma, será utilizado React.js combinando com **Tailwind CSS**. Ja no backend, optou-se pela linguagem **Python**, utilizando o framework **Django** ou **FastAPI**. Por fim, o banco de dados será estruturado com o MySQL. 
+
