@@ -19,4 +19,10 @@ As principais features estão destacadas abaixo:
 **Perfil dos Usuários:** Perfis individuais para estudantes; Possibilidade de personalização do design da plataforma.  
 
 ## Membros da Equipe e responsabilidades
-**Layla Raissa Silva Pereira:**
+**Layla Raissa Silva Pereira:** Responsável pelo frontend da plataforma, garantindo uma experiência visual responsiva para os estudantes.
+
+**Leticia Ribeiro Miranda:** Trabalha na implementação do backend do sistema e estrutura de dados. Também auxilia no UX design da plataforma e no gerenciamento dos entregáveis.
+
+**Lucas Rafael Costa Santos:** Atua tanto no frontend quanto no backend, integrando a interface do usuário com a lógica do servidor e banco de dados.
+
+**Lucca Alvarenga de Magalhães Pinto:** Responsável pelo backend da plataforma e no gerenciamento dos entregáveis.
