@@ -1,4 +1,4 @@
-﻿# Trabalho Prático da disciplina de Engenharia de Software
+﻿# Trabalho Prático da Disciplina de Engenharia de Software
 **Alunos:** **Layla Pereira, Leticia Ribeiro, Lucas Costa, Lucca Alvarenga**  
 Departamento de Ciência da Computação – Universidade Federal de Minas Gerais (UFMG) Belo Horizonte – MG – Brazil 
 
@@ -18,7 +18,7 @@ As principais features estão destacadas abaixo.
 
 **Perfil dos Usuários:** Perfis individuais para estudantes; Possibilidade de personalização do design da plataforma.  
 
-## Membros da Equipe e responsabilidades
+## Membros da Equipe e Responsabilidades
 **Layla Raissa Silva Pereira:** Responsável pelo frontend da plataforma, garantindo uma experiência visual responsiva para os estudantes.
 
 **Leticia Ribeiro Miranda:** Trabalha na implementação do backend do sistema e estrutura de dados. Também auxilia no UX design da plataforma e no gerenciamento dos entregáveis.
