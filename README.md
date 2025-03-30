@@ -25,7 +25,7 @@ As principais features estão destacadas abaixo.
 
 **Lucas Rafael Costa Santos:** Atua tanto no frontend quanto no backend, integrando a interface do usuário com a lógica do servidor e banco de dados.
 
-**Lucca Alvarenga de Magalhães Pinto:** Responsável pelo backend da plataforma e no gerenciamento dos entregáveis.
+**Lucca Alvarenga de Magalhães Pinto:** Responsável pelo backend da plataforma, testes e no gerenciamento dos entregáveis.
 
 ## Tecnologias Utilizadas  
 
