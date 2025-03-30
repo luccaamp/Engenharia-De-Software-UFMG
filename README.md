@@ -33,4 +33,23 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 
 ## Backlog do Produto
 
+1. Como usuário, eu gostaria de me cadastrar na plataforma com login e senha. 
+2. Como usuário, eu gostaria de adicionar disciplinas 
+3. Como usuário, eu gostaria de editar e deletar disciplinas
+4. Como usuário, eu gostaria de criar tarefas
+5. Como usuário, eu gostaria de adicionar descrições para cada tarefa
+6. Como usuário, eu gostaria de adicionar datas das tarefas
+7. Como usuário, eu gostaria de editar e deletar tarefas
+8. Como usuário, eu gostaria de adicionar notas
+9. Como usuário, eu gostaria de editar e deletar notas
+10. Como usuário, eu gostaria de acompanhar minhas notas graficamente
+11. Como usuário, eu gostaria de visualizar as tarefas mais próximas do vencimento
+12. Como usuário, eu gostaria de agrupar disciplinas por semestres
+13. Como usuário, eu gostaria de alterar meu e-mail e minha senha
+14. Como usuário, eu gostaria de configurar meu perfil
+15. Como usuário, eu gostaria de personalizar o design da minha conta
+16. Como usuário, eu gostaria de fazer simulações de notas
+17. Como usuário, eu gostaria de visualizar estatísticas detalhadas sobre meu desempenho acadêmico
+18. Como usuário, eu gostaria de definir metas acadêmicas e acompanhar meu progresso
+
 ## BackLog do Sprint
