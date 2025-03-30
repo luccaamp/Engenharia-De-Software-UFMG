@@ -27,11 +27,10 @@ As principais features estão destacadas abaixo.
 
 **Lucca Alvarenga de Magalhães Pinto:** Responsável pelo backend da plataforma e no gerenciamento dos entregáveis.
 
-## Backlog do Produto
-
-## BackLog do Sprint
-
 ## Tecnologias Utilizadas  
 
 Para o frontend da plataforma, será utilizado React.js combinando com **Tailwind CSS**. Ja no backend, optou-se pela linguagem **Python**, utilizando o framework **Django** ou **FastAPI**. Por fim, o banco de dados será estruturado com o MySQL. 
 
+## Backlog do Produto
+
+## BackLog do Sprint
