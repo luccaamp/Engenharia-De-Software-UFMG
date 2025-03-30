@@ -16,7 +16,7 @@ As principais features estão destacadas abaixo:
 
 **Dashboard Personalizado:** Resumo do desempenho acadêmico; Destaque para tarefas e atividades pendentes; Interface intuitiva e responsiva.  
 
-**Suporte a Múltiplos Usuários:** Perfis individuais para estudantes; Possibilidade de personalização do design da plataforma.  
+**Perfil dos Usuários:** Perfis individuais para estudantes; Possibilidade de personalização do design da plataforma.  
 
 ## Membros da Equipe e responsabilidades
 **Layla Raissa Silva Pereira:**
