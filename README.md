@@ -216,13 +216,13 @@ Implementar o frontend das estatísticas[Layla]
 Implementar backend para cálculo e fornecimento de dados de desempenho [Lucas]
 Testar visualização de desempenho acadêmico [Lucca]
 
-História #18: Como usuário, eu gostaria de definir metas acadêmicas e acompanhar meu progresso.
+**História #18: Como usuário, eu gostaria de definir metas acadêmicas e acompanhar meu progresso**
 
 Tarefas e responsáveis:
-Criar design da tela de metas acadêmicas Lucas]
-Implementar o frontend de metas [Layla]
-Criar tabela de metas de cada disciplina e semestre por usuário [Leticia]
-Implementar backend para salvar metas [Lucca]
-Adicionar funcionalidade de atualizar e acompanhar o progresso das metas [Lucca]
-Testar criação e acompanhamento de metas [Leticia]
+- Criar design da tela de metas acadêmicas Lucas]  
+- Implementar o frontend de metas [Layla]  
+- Criar tabela de metas de cada disciplina e semestre por usuário [Leticia]  
+- Implementar backend para salvar metas [Lucca]  
+- Adicionar funcionalidade de atualizar e acompanhar o progresso das metas [Lucca]  
+- Testar criação e acompanhamento de metas [Leticia]  
 
