@@ -92,15 +92,15 @@ Tarefas e responsáveis:
 - Implementar a lógica de atualizar lista de disciplinas após edição ou exclusão [Lucas]  
 - Testar edição e deleção de disciplinas [Lucca]   
 
-História #4: Como usuário, eu gostaria de criar tarefas.
+**História #4: Como usuário, eu gostaria de criar tarefas.**
 
 Tarefas e responsáveis:
-Criar o design da tela de criação de tarefas [Leticia]
-Implementar o frontend de criação de tarefas [Layla]
-Criar tabela de tarefas de cada usuário [Leticia]
-Implementar backend para criação de tarefas [Lucca] 
-Integrar frontend com API para criar tarefas [Lucas]
-Testar criação de tarefas [Layla]
+- Criar o design da tela de criação de tarefas [Leticia]
+- Implementar o frontend de criação de tarefas [Layla]
+- Criar tabela de tarefas de cada usuário [Leticia]
+- Implementar backend para criação de tarefas [Lucca] 
+- Integrar frontend com API para criar tarefas [Lucas]
+- Testar criação de tarefas [Layla]
 
 História #5: Como usuário, eu gostaria de adicionar descrições para cada tarefa.
 
