@@ -54,7 +54,7 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 
 ## BackLog do Sprint
 
-**História #1: Como usuário, eu gostaria de me cadastrar na plataforma com login e senha **
+**História #1: Como usuário, eu gostaria de me cadastrar na plataforma com login e senha**
 
 Tarefas e responsáveis:  
 - Instalar banco de dados [Lucca]  
@@ -71,7 +71,7 @@ Tarefas e responsáveis:
 - Criar mensagens de erro e feedback para o usuário no cadastro [Lucca]  
 - Testar fluxo de cadastro (sucesso e erro) [Lucca]   
 
-**História #2: Como usuário, eu gostaria de adicionar disciplinas **
+**História #2: Como usuário, eu gostaria de adicionar disciplinas**
 
 Tarefas e responsáveis:  
 - Criar o design da tela de adição de disciplinas [Leticia]  
