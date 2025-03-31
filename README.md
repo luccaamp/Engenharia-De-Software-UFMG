@@ -127,15 +127,15 @@ Implementar confirmação antes de deletar a tarefa [Lucca]
 Implementar a lógica de atualizar lista de tarefas após edição ou exclusão [Lucas]
 Testar edição e deleção de tarefas [Lucas]
 
-História #8: Como usuário, eu gostaria de adicionar notas.
+**História #8: Como usuário, eu gostaria de adicionar notas.**
 
-Tarefas e responsáveis:
-Criar o design da tela de adição de notas [Leticia]
-Implementar o frontend de adição de notas [Layla]
-Criar tabela de notas de cada disciplina por usuário [Leticia]
-Implementar backend para adicionar e salvar notas [Lucca]
-Integrar frontend com API para adicionar notas [Lucas]
-Testar adição de notas [Layla]
+- Tarefas e responsáveis:
+- Criar o design da tela de adição de notas [Leticia]
+- Implementar o frontend de adição de notas [Layla]
+- Criar tabela de notas de cada disciplina por usuário [Leticia]
+- Implementar backend para adicionar e salvar notas [Lucca]
+- Integrar frontend com API para adicionar notas [Lucas]
+- Testar adição de notas [Layla]
 
 História #9: Como usuário, eu gostaria de editar e deletar notas.
 
