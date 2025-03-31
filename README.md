@@ -200,16 +200,13 @@ Implementar backend para salvar configurações de design [Lucas]
 Integrar opções de personalização no frontend [Lucas]
 Testar as alterações de design no perfil [Lucca]
 
-História #16: Como usuário, eu gostaria de fazer simulações de notas.
+**História #16: Como usuário, eu gostaria de fazer simulações de notas**
 
 Tarefas e responsáveis:
-Criar o design da tela para simulação de notas [Leticia]
-Implementar o frontend dessa simulação[Layla]
-Implementar backend para cálculo de simulação de notas [Lucca]
-Testar simulação de notas [Lucas]
-
-
-
+- Criar o design da tela para simulação de notas [Leticia]  
+- Implementar o frontend dessa simulação [Layla]  
+- Implementar backend para cálculo de simulação de notas [Lucca]  
+- Testar simulação de notas [Lucas]  
 
 História #17: Como usuário, eu gostaria de visualizar estatísticas detalhadas sobre meu desempenho acadêmico.
 
