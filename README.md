@@ -102,12 +102,12 @@ Tarefas e responsáveis:
 - Integrar frontend com API para criar tarefas [Lucas]
 - Testar criação de tarefas [Layla]
 
-História #5: Como usuário, eu gostaria de adicionar descrições para cada tarefa.
+**História #5: Como usuário, eu gostaria de adicionar descrições para cada tarefa.**
 
 Tarefas e responsáveis:
-Adicionar campo de descrição na tela de criação de tarefas [Lucca] 
-Implementar backend para salvar descrição da tarefa [Leticia]
-Testar a adição e exibição de descrições de tarefas [Lucas]
+- Adicionar campo de descrição na tela de criação de tarefas [Lucca] 
+- Implementar backend para salvar descrição da tarefa [Leticia]
+- Testar a adição e exibição de descrições de tarefas [Lucas]
 
 **História #6: Como usuário, eu gostaria de adicionar datas das tarefas**
 
@@ -116,16 +116,16 @@ Tarefas e responsáveis:
 - Implementar lógica de backend para salvar data da tarefa [Lucas]  
 - Testar o processo de adição de datas nas tarefas [Lucca]  
 
-História #7: Como usuário, eu gostaria de editar e deletar tarefas.
+**História #7: Como usuário, eu gostaria de editar e deletar tarefas.**
 
 Tarefas e responsáveis:
-Criar o design da tela de edição de tarefas [Leticia]
-Implementar o frontend de edição de tarefas[Layla]
-Implementar lógica de backend para edição e exclusão de tarefas [Leticia]
-Implementar opção de marcar tarefa como concluída[Layla]
-Implementar confirmação antes de deletar a tarefa [Lucca]
-Implementar a lógica de atualizar lista de tarefas após edição ou exclusão [Lucas]
-Testar edição e deleção de tarefas [Lucas]
+- Criar o design da tela de edição de tarefas [Leticia]
+- Implementar o frontend de edição de tarefas[Layla]
+- Implementar lógica de backend para edição e exclusão de tarefas [Leticia]
+- Implementar opção de marcar tarefa como concluída[Layla]
+- Implementar confirmação antes de deletar a tarefa [Lucca]
+- Implementar a lógica de atualizar lista de tarefas após edição ou exclusão [Lucas]
+- Testar edição e deleção de tarefas [Lucas]
 
 **História #8: Como usuário, eu gostaria de adicionar notas.**
 
@@ -137,15 +137,15 @@ Testar edição e deleção de tarefas [Lucas]
 - Integrar frontend com API para adicionar notas [Lucas]
 - Testar adição de notas [Layla]
 
-História #9: Como usuário, eu gostaria de editar e deletar notas.
+**História #9: Como usuário, eu gostaria de editar e deletar notas.**
 
 Tarefas e responsáveis:
-Criar o design da tela de edição de notas [Lucas]
-Implementar o frontend de edição de notas [Layla]
-Implementar backend para edição e exclusão de notas [Leticia]
-Implementar confirmação antes de deletar notas [Layla]
-Implementar a lógica de atualizar as notas após edição ou exclusão [Lucca]
-Testar edição e deleção de notas [Lucca]
+- Criar o design da tela de edição de notas [Lucas]
+- Implementar o frontend de edição de notas [Layla]
+- Implementar backend para edição e exclusão de notas [Leticia]
+- Implementar confirmação antes de deletar notas [Layla]
+- Implementar a lógica de atualizar as notas após edição ou exclusão [Lucca]
+- Testar edição e deleção de notas [Lucca]
 
 **História #10: Como usuário, eu gostaria de acompanhar minhas notas graficamente**
 
@@ -157,29 +157,29 @@ Tarefas e responsáveis:
 - Integrar gráfico com backend para exibir dados [Lucca]  
 - Testar a exibição correta dos gráficos com base nas notas [Lucca]  
 
-História #11: Como usuário, eu gostaria de visualizar as tarefas mais próximas do vencimento.
+**História #11: Como usuário, eu gostaria de visualizar as tarefas mais próximas do vencimento.**
 
 Tarefas e responsáveis:
-Criar o design da tela de visualização das tarefas mais próximas do vencimento na tela principal [Leticia]
-Implementar o frontend de visualização das tarefas mais próximas do vencimento na tela principal [Layla]
-Criar opção de filtro de tarefas
-Implementar backend para fornecer dados das datas [Lucca]
-Testar a exibição correta das tarefas [Lucas]
+- Criar o design da tela de visualização das tarefas mais próximas do vencimento na tela principal [Leticia]
+- Implementar o frontend de visualização das tarefas mais próximas do vencimento na tela principal [Layla]
+- Criar opção de filtro de tarefas
+- Implementar backend para fornecer dados das datas [Lucca]
+- Testar a exibição correta das tarefas [Lucas]
 
-História #12: Como usuário, eu gostaria de agrupar disciplinas por semestres.
-
-Tarefas e responsáveis:
-Implementar backend para fornecer disciplinas agrupadas por semestre [Lucca]
-Atualizar o frontend para exibir disciplinas agrupadas [Leticia]
-Testar a funcionalidade de agrupamento de disciplinas [Lucas]
-
-História #13: Como usuário, eu gostaria de alterar meu e-mail e minha senha.
+**História #12: Como usuário, eu gostaria de agrupar disciplinas por semestres.**
 
 Tarefas e responsáveis:
-Criar o design da tela de alteração de e-mail e senha [Leticia]
-Implementar o frontend [Layla]
-Implementar backend para atualizar e-mail e senha [Lucca]
-Testar alteração de e-mail e senha [Lucas]
+- Implementar backend para fornecer disciplinas agrupadas por semestre [Lucca]
+- Atualizar o frontend para exibir disciplinas agrupadas [Leticia]
+- Testar a funcionalidade de agrupamento de disciplinas [Lucas]
+
+**História #13: Como usuário, eu gostaria de alterar meu e-mail e minha senha.**
+
+Tarefas e responsáveis:
+- Criar o design da tela de alteração de e-mail e senha [Leticia]
+- Implementar o frontend [Layla]
+- Implementar backend para atualizar e-mail e senha [Lucca]
+- Testar alteração de e-mail e senha [Lucas]
 
 
 **História #14: Como usuário, eu gostaria de configurar meu perfil**
@@ -191,14 +191,14 @@ Tarefas e responsáveis:
 - Testar a atualização do perfil [Lucca]  
 
 
-História #15: Como usuário, eu gostaria de personalizar o design da minha conta.
+**História #15: Como usuário, eu gostaria de personalizar o design da minha conta.**
 
 Tarefas e responsáveis:
-Criar o design da tela de personalização do perfil [Leticia]
-Implementar o frontend [Layla]
-Implementar backend para salvar configurações de design [Lucas] 
-Integrar opções de personalização no frontend [Lucas]
-Testar as alterações de design no perfil [Lucca]
+- Criar o design da tela de personalização do perfil [Leticia]
+- Implementar o frontend [Layla]
+- Implementar backend para salvar configurações de design [Lucas] 
+- Integrar opções de personalização no frontend [Lucas]
+- Testar as alterações de design no perfil [Lucca]
 
 **História #16: Como usuário, eu gostaria de fazer simulações de notas**
 
@@ -208,13 +208,13 @@ Tarefas e responsáveis:
 - Implementar backend para cálculo de simulação de notas [Lucca]  
 - Testar simulação de notas [Lucas]  
 
-História #17: Como usuário, eu gostaria de visualizar estatísticas detalhadas sobre meu desempenho acadêmico.
+**História #17: Como usuário, eu gostaria de visualizar estatísticas detalhadas sobre meu desempenho acadêmico.**
 
 Tarefas e responsáveis:
-Criar design da tela de estatísticas de desempenho [Leticia]
-Implementar o frontend das estatísticas[Layla]
-Implementar backend para cálculo e fornecimento de dados de desempenho [Lucas]
-Testar visualização de desempenho acadêmico [Lucca]
+- Criar design da tela de estatísticas de desempenho [Leticia]
+- Implementar o frontend das estatísticas[Layla]
+- Implementar backend para cálculo e fornecimento de dados de desempenho [Lucas]
+- Testar visualização de desempenho acadêmico [Lucca]
 
 **História #18: Como usuário, eu gostaria de definir metas acadêmicas e acompanhar meu progresso**
 
