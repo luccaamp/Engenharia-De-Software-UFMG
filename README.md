@@ -182,13 +182,13 @@ Implementar backend para atualizar e-mail e senha [Lucca]
 Testar alteração de e-mail e senha [Lucas]
 
 
-História #14: Como usuário, eu gostaria de configurar meu perfil.
+**História #14: Como usuário, eu gostaria de configurar meu perfil**
 
 Tarefas e responsáveis:
-Criar o design da tela de configuração de perfil [Leticia]
-Implementar o frontend [Layla]
-Implementar backend para salvar configurações de perfil [Lucas]
-Testar a atualização do perfil [Lucca]
+- Criar o design da tela de configuração de perfil [Leticia]  
+- Implementar o frontend [Layla]  
+- Implementar backend para salvar configurações de perfil [Lucas]  
+- Testar a atualização do perfil [Lucca]  
 
 
 História #15: Como usuário, eu gostaria de personalizar o design da minha conta.
