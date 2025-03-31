@@ -147,15 +147,15 @@ Implementar confirmação antes de deletar notas [Layla]
 Implementar a lógica de atualizar as notas após edição ou exclusão [Lucca]
 Testar edição e deleção de notas [Lucca]
 
-História #10: Como usuário, eu gostaria de acompanhar minhas notas graficamente.
+**História #10: Como usuário, eu gostaria de acompanhar minhas notas graficamente**
 
 Tarefas e responsáveis:
-Criar o design de exibição de notas na tela principal [Lucas]
-Implementar o frontend de exibição de notas na tela principal [Layla]
-Criar componente gráfico para exibir notas [Leticia]
-Implementar lógica para calcular média e evolução de notas [Leticia]
-Integrar gráfico com backend para exibir dados [Lucca]
-Testar a exibição correta dos gráficos com base nas notas [Lucca]
+- Criar o design de exibição de notas na tela principal [Lucas]  
+- Implementar o frontend de exibição de notas na tela principal [Layla]  
+- Criar componente gráfico para exibir notas [Leticia]  
+- Implementar lógica para calcular média e evolução de notas [Leticia]  
+- Integrar gráfico com backend para exibir dados [Lucca]  
+- Testar a exibição correta dos gráficos com base nas notas [Lucca]  
 
 História #11: Como usuário, eu gostaria de visualizar as tarefas mais próximas do vencimento.
 
