@@ -57,19 +57,19 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 **História #1: Como usuário, eu gostaria de me cadastrar na plataforma com login e senha.**
 
 Tarefas e responsáveis:  
-Instalar banco de dados [Lucca]  
-Criar tabela de usuário [Leticia]  
-Integrar com banco de dados para cadastro do usuário [Leticia]  
-Criar o design da tela de cadastro de usuário [Layla]  
-Implementar o frontend de cadastro de usuário [Layla]  
-Implementar validação de dados (e-mail, senha) [Lucas]  
-Criar backend para registro de novos usuários [Lucas]  
-Integrar frontend com a API de cadastro de usuários [Lucca]  
-Criar o design tela principal [Leticia]  
-Implementar versão inicial da tela principal [Layla]  
-Implementar redirecionamento após cadastro bem-sucedido [Leticia]  
-Criar mensagens de erro e feedback para o usuário no cadastro [Lucca]  
-Testar fluxo de cadastro (sucesso e erro) [Lucca]   
+- Instalar banco de dados [Lucca]  
+- Criar tabela de usuário [Leticia]  
+- Integrar com banco de dados para cadastro do usuário [Leticia]  
+- Criar o design da tela de cadastro de usuário [Layla]  
+- Implementar o frontend de cadastro de usuário [Layla]  
+- Implementar validação de dados (e-mail, senha) [Lucas]  
+- Criar backend para registro de novos usuários [Lucas]  
+- Integrar frontend com a API de cadastro de usuários [Lucca]  
+- Criar o design tela principal [Leticia]  
+- Implementar versão inicial da tela principal [Layla]  
+- Implementar redirecionamento após cadastro bem-sucedido [Leticia]  
+- Criar mensagens de erro e feedback para o usuário no cadastro [Lucca]  
+- Testar fluxo de cadastro (sucesso e erro) [Lucca]   
 
 História #2: Como usuário, eu gostaria de adicionar disciplinas.
 
