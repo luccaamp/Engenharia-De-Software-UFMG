@@ -92,7 +92,7 @@ Tarefas e responsáveis:
 - Implementar a lógica de atualizar lista de disciplinas após edição ou exclusão [Lucas]  
 - Testar edição e deleção de disciplinas [Lucca]   
 
-**História #4: Como usuário, eu gostaria de criar tarefas.**
+**História #4: Como usuário, eu gostaria de criar tarefas**
 
 Tarefas e responsáveis:
 - Criar o design da tela de criação de tarefas [Leticia]
