@@ -80,17 +80,17 @@ Tarefas e responsáveis:
 - Criar mecanismo para evitar duplicação de disciplinas  
 - Implementar backend para criação de novas disciplinas [Lucas]  
 - Integrar frontend com API para adicionar disciplinas [Lucca]   
-- Testar criação de disciplinas[Layla]  
+- Testar criação de disciplinas [Layla]  
 
-História #3: Como usuário, eu gostaria de editar e deletar disciplinas.
+**História #3: Como usuário, eu gostaria de editar e deletar disciplinas**
 
 Tarefas e responsáveis:
-Criar o design da tela para edição de disciplinas [Leticia]
-Implementar o frontend de edição de disciplinas [Layla]
-Implementar lógica de backend para edição e exclusão de disciplinas [Leticia] 
-Implementar confirmação antes de deletar disciplinas[Layla]
-Implementar a lógica de atualizar lista de disciplinas após edição ou exclusão [Lucas]
-Testar edição e deleção de disciplinas [Lucca] 
+- Criar o design da tela para edição de disciplinas [Leticia]  
+- Implementar o frontend de edição de disciplinas [Layla]  
+- Implementar lógica de backend para edição e exclusão de disciplinas [Leticia]   
+- Implementar confirmação antes de deletar disciplinas [Layla]  
+- Implementar a lógica de atualizar lista de disciplinas após edição ou exclusão [Lucas]  
+- Testar edição e deleção de disciplinas [Lucca]   
 
 História #4: Como usuário, eu gostaria de criar tarefas.
 
