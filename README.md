@@ -109,12 +109,12 @@ Adicionar campo de descrição na tela de criação de tarefas [Lucca]
 Implementar backend para salvar descrição da tarefa [Leticia]
 Testar a adição e exibição de descrições de tarefas [Lucas]
 
-História #6: Como usuário, eu gostaria de adicionar datas das tarefas.
+**História #6: Como usuário, eu gostaria de adicionar datas das tarefas**
 
 Tarefas e responsáveis:
-Criar campo para inserção de data de vencimento na tela de criação de tarefas [Lucca] 
-Implementar lógica de backend para salvar data da tarefa [Lucas]
-Testar o processo de adição de datas nas tarefas [Lucca]
+- Criar campo para inserção de data de vencimento na tela de criação de tarefas [Lucca]   
+- Implementar lógica de backend para salvar data da tarefa [Lucas]  
+- Testar o processo de adição de datas nas tarefas [Lucca]  
 
 História #7: Como usuário, eu gostaria de editar e deletar tarefas.
 
