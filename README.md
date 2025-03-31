@@ -102,7 +102,7 @@ Tarefas e responsáveis:
 - Integrar frontend com API para criar tarefas [Lucas]
 - Testar criação de tarefas [Layla]
 
-**História #5: Como usuário, eu gostaria de adicionar descrições para cada tarefa.**
+**História #5: Como usuário, eu gostaria de adicionar descrições para cada tarefa**
 
 Tarefas e responsáveis:
 - Adicionar campo de descrição na tela de criação de tarefas [Lucca] 
@@ -116,18 +116,18 @@ Tarefas e responsáveis:
 - Implementar lógica de backend para salvar data da tarefa [Lucas]  
 - Testar o processo de adição de datas nas tarefas [Lucca]  
 
-**História #7: Como usuário, eu gostaria de editar e deletar tarefas.**
+**História #7: Como usuário, eu gostaria de editar e deletar tarefas**
 
 Tarefas e responsáveis:
 - Criar o design da tela de edição de tarefas [Leticia]
-- Implementar o frontend de edição de tarefas[Layla]
+- Implementar o frontend de edição de tarefas [Layla]
 - Implementar lógica de backend para edição e exclusão de tarefas [Leticia]
-- Implementar opção de marcar tarefa como concluída[Layla]
+- Implementar opção de marcar tarefa como concluída [Layla]
 - Implementar confirmação antes de deletar a tarefa [Lucca]
 - Implementar a lógica de atualizar lista de tarefas após edição ou exclusão [Lucas]
 - Testar edição e deleção de tarefas [Lucas]
 
-**História #8: Como usuário, eu gostaria de adicionar notas.**
+**História #8: Como usuário, eu gostaria de adicionar notas**
 
 - Tarefas e responsáveis:
 - Criar o design da tela de adição de notas [Leticia]
@@ -137,7 +137,7 @@ Tarefas e responsáveis:
 - Integrar frontend com API para adicionar notas [Lucas]
 - Testar adição de notas [Layla]
 
-**História #9: Como usuário, eu gostaria de editar e deletar notas.**
+**História #9: Como usuário, eu gostaria de editar e deletar notas**
 
 Tarefas e responsáveis:
 - Criar o design da tela de edição de notas [Lucas]
@@ -157,7 +157,7 @@ Tarefas e responsáveis:
 - Integrar gráfico com backend para exibir dados [Lucca]  
 - Testar a exibição correta dos gráficos com base nas notas [Lucca]  
 
-**História #11: Como usuário, eu gostaria de visualizar as tarefas mais próximas do vencimento.**
+**História #11: Como usuário, eu gostaria de visualizar as tarefas mais próximas do vencimento**
 
 Tarefas e responsáveis:
 - Criar o design da tela de visualização das tarefas mais próximas do vencimento na tela principal [Leticia]
@@ -166,14 +166,14 @@ Tarefas e responsáveis:
 - Implementar backend para fornecer dados das datas [Lucca]
 - Testar a exibição correta das tarefas [Lucas]
 
-**História #12: Como usuário, eu gostaria de agrupar disciplinas por semestres.**
+**História #12: Como usuário, eu gostaria de agrupar disciplinas por semestres**
 
 Tarefas e responsáveis:
 - Implementar backend para fornecer disciplinas agrupadas por semestre [Lucca]
 - Atualizar o frontend para exibir disciplinas agrupadas [Leticia]
 - Testar a funcionalidade de agrupamento de disciplinas [Lucas]
 
-**História #13: Como usuário, eu gostaria de alterar meu e-mail e minha senha.**
+**História #13: Como usuário, eu gostaria de alterar meu e-mail e minha senha**
 
 Tarefas e responsáveis:
 - Criar o design da tela de alteração de e-mail e senha [Leticia]
@@ -191,7 +191,7 @@ Tarefas e responsáveis:
 - Testar a atualização do perfil [Lucca]  
 
 
-**História #15: Como usuário, eu gostaria de personalizar o design da minha conta.**
+**História #15: Como usuário, eu gostaria de personalizar o design da minha conta**
 
 Tarefas e responsáveis:
 - Criar o design da tela de personalização do perfil [Leticia]
@@ -208,11 +208,11 @@ Tarefas e responsáveis:
 - Implementar backend para cálculo de simulação de notas [Lucca]  
 - Testar simulação de notas [Lucas]  
 
-**História #17: Como usuário, eu gostaria de visualizar estatísticas detalhadas sobre meu desempenho acadêmico.**
+**História #17: Como usuário, eu gostaria de visualizar estatísticas detalhadas sobre meu desempenho acadêmico**
 
 Tarefas e responsáveis:
 - Criar design da tela de estatísticas de desempenho [Leticia]
-- Implementar o frontend das estatísticas[Layla]
+- Implementar o frontend das estatísticas [Layla]
 - Implementar backend para cálculo e fornecimento de dados de desempenho [Lucas]
 - Testar visualização de desempenho acadêmico [Lucca]
 
