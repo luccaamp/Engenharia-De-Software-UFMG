@@ -4,13 +4,13 @@ Departamento de Ciência da Computação – Universidade Federal de Minas Gerai
 
 ## Objetivo e Principais Features
 
-O objetivo deste projeto é desenvolver uma plataforma para a gestão de notas, tarefas e atividades das disciplinas da universidade. A plataforma permitirá que os alunos organizem seu desempenho acadêmico, acompanhem prazos das provas e entregáveis e visualizem suas notas graficamente.
+O objetivo deste projeto é desenvolver uma plataforma para a gestão de notas, tarefas e atividades das disciplinas da universidade. A plataforma permitirá que os alunos organizem seu desempenho acadêmico, visualizem suas notas graficamente e acompanhem prazos das provas e tarefas.
 
 As principais features estão destacadas abaixo.
 
 **Gerenciamento de Disciplinas:** Adição, edição e remoção de disciplinas; Associação de notas, tarefas e atividades a cada disciplina; Organização por semestre ou período letivo.
 
-**Gerenciamento de Notas:**  Registro e visualização de notas por disciplina; Cálculo automático das estatísticas. 
+**Gerenciamento de Notas:**  Registro de notas por disciplina e visualização por meio de gráficos; Cálculo automático das estatísticas. 
 
 **Controle de Tarefas e Atividades:** Criação e organização de tarefas por disciplina; Definição de prazos e ordenação de acordo com o vencimento; Marcação de tarefas como concluídas.  
 
@@ -21,11 +21,11 @@ As principais features estão destacadas abaixo.
 ## Membros da Equipe e Responsabilidades
 **Layla Raissa Silva Pereira:** Responsável pelo frontend da plataforma, garantindo uma experiência visual responsiva para os estudantes.
 
-**Leticia Ribeiro Miranda:** Trabalha na implementação do backend do sistema e estrutura de dados. Também auxilia no UX design da plataforma e no gerenciamento dos entregáveis.
+**Leticia Ribeiro Miranda:** Trabalha na implementação do backend do sistema e estrutura de dados. Também auxilia no UX design da plataforma.
 
-**Lucas Rafael Costa Santos:** Atua tanto no frontend quanto no backend, integrando a interface do usuário com a lógica do servidor e banco de dados.
+**Lucas Rafael Costa Santos:** Atua tanto no frontend, integrando a interface do usuário com a lógica do servidor e banco de dados.
 
-**Lucca Alvarenga de Magalhães Pinto:** Responsável pelo backend da plataforma, testes e no gerenciamento dos entregáveis.
+**Lucca Alvarenga de Magalhães Pinto:** Responsável pelo backend da plataforma, na criação e avaliação de testes para validar o funcionamento do sistema.
 
 ## Tecnologias Utilizadas  
 
@@ -33,24 +33,16 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 
 ## Backlog do Produto
 
-1. Como usuário, eu gostaria de me cadastrar na plataforma com login e senha. 
-2. Como usuário, eu gostaria de adicionar disciplinas 
-3. Como usuário, eu gostaria de editar e deletar disciplinas
-4. Como usuário, eu gostaria de criar tarefas
-5. Como usuário, eu gostaria de adicionar descrições para cada tarefa
-6. Como usuário, eu gostaria de adicionar datas das tarefas
-7. Como usuário, eu gostaria de editar e deletar tarefas
-8. Como usuário, eu gostaria de adicionar notas
-9. Como usuário, eu gostaria de editar e deletar notas
-10. Como usuário, eu gostaria de acompanhar minhas notas graficamente
-11. Como usuário, eu gostaria de visualizar as tarefas mais próximas do vencimento
-12. Como usuário, eu gostaria de agrupar disciplinas por semestres
-13. Como usuário, eu gostaria de alterar meu e-mail e minha senha
-14. Como usuário, eu gostaria de configurar meu perfil
-15. Como usuário, eu gostaria de personalizar o design da minha conta
-16. Como usuário, eu gostaria de fazer simulações de notas
-17. Como usuário, eu gostaria de visualizar estatísticas detalhadas sobre meu desempenho acadêmico
-18. Como usuário, eu gostaria de definir metas acadêmicas e acompanhar meu progresso
+1. Como usuário, eu gostaria de me cadastrar na plataforma com login e senha, e ter a opção de alterar essas informações futuramente. 
+2. Como usuário, eu gostaria de gerenciar disciplinas e suas respectivas atividades avaliativas, podendo criar, editar e excluir ambas. 
+3. Como usuário, eu gostaria de adicionar, editar e deletar notas das tarefas.
+4. Como usuário, eu gostaria de acompanhar minhas notas graficamente e visualizar estatísticas detalhadas sobre meu desempenho acadêmico.
+5. Como usuário, eu gostaria de fazer simulações de notas.
+6. Como usuário, eu gostaria de definir metas acadêmicas e acompanhar meu progresso.
+7. Como usuário, eu gostaria de visualizar as tarefas mais próximas do vencimento.
+8. Como usuário, eu gostaria de configurar meu perfil e personalizar o design da minha conta.
+9. Como usuário, eu gostaria de agrupar disciplinas por semestres.
+10. Como usuário, eu gostaria de receber notificações e lembretes, via email, sobre tarefas e prazos importantes.
 
 ## BackLog do Sprint
 
