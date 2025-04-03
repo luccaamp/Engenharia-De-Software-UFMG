@@ -45,17 +45,18 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 
 ## BackLog do Sprint
 
-História #1: Como usuário, eu gostaria de me cadastrar na plataforma com login e senha, e ter a opção de alterar essas informações futuramente.
-Tarefas e responsáveis:
-- Integrar o banco de dados para armazenar usuários. [Lucas, Lucca]
-- Implementar a API de cadastro de usuário. [Layla]
-- Criar a interface de cadastro. [Layla, Leticia]
-- Criar sistema de login e autenticação. [Lucca, Leticia]
-- Implementar versão inicial da tela principal. [Lucas, Layla]
-- Criar o design tela principal. [Leticia]
-- Implementar funcionalidade de alteração de e-mail e senha. [Lucas]
-- Criar a interface para alterar e-mail e senha. [Layla, Leticia]
-- Testes e validações. [Lucca]
+### História #1: Como usuário, eu gostaria de me cadastrar na plataforma com login e senha, e ter a opção de alterar essas informações futuramente.
+| Tarefa | Responsável |
+|--------|------------|
+| Integrar o banco de dados para armazenar usuários | Lucas, Lucca | 
+| Implementar a API de cadastro de usuário| Layla | 
+| Criar a interface de cadastro| Layla, Leticia | 
+| Criar sistema de login e autenticação| Lucca, Leticia | 
+| Implementar versão inicial da tela principal| Lucas, Layla | 
+| Criar o design tela principal| Leticia | 
+| Implementar funcionalidade de alteração de e-mail e senha| Lucas | 
+| Criar a interface para alterar e-mail e senha| Layla, Leticia | 
+| Testes e validações| Lucca | 
 
 História #2: Como usuário, eu gostaria de gerenciar disciplinas e suas respectivas atividades avaliativas, podendo criar, editar e excluir ambas. 
 Tarefas e responsáveis:
