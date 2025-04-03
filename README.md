@@ -85,17 +85,7 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 |--------|------------|
 | Criar o design de exibição de notas na tela principal | Leticia |
 | Implementar o frontend de exibição de notas na tela principal | Layla |
-| Criar componente gráfico para exibir notas | Leticia |
+| Criar componente gráfico para exibir notas | Lucas |
 | Implementar lógica para calcular média e evolução de notas | Leticia |
 | Integrar gráfico com backend para exibir dados | Lucca |
 | Testar a exibição correta dos gráficos com base nas notas | Lucca |
-| Criar design da tela de estatísticas de desempenho | Leticia |
-| Implementar o frontend das estatísticas | Layla |
-| Implementar backend para cálculo e fornecimento de dados de desempenho | Lucas |
-| Testar visualização de desempenho acadêmico | Lucca |
-| Criar design da tela de metas acadêmicas | Lucas |
-| Implementar o frontend de metas | Layla |
-| Criar tabela de metas de cada disciplina e semestre por usuário | Leticia |
-| Implementar backend para salvar metas | Lucca |
-| Adicionar funcionalidade de atualizar e acompanhar o progresso das metas | Lucca |
-| Testar criação e acompanhamento de metas | Leticia |
