@@ -68,7 +68,6 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 | Integrar o frontend com o backend para garantir o funcionamento das disciplinas e tarefas | Lucas, Lucca |
 | Implementar confirmações antes de deletar disciplinas e tarefas | Lucca |
 | Criar a funcionalidade de marcar tarefas como concluídas | Layla |
-| Garantir que a lista de disciplinas e tarefas seja atualizada após alterações | Lucas |
 | Testar todas as funcionalidades de disciplinas e tarefas (criação, edição, exclusão, descrição e vencimento) | Lucas, Lucca |
 
 ### História #3: Como usuário, eu gostaria de adicionar, editar e deletar notas das tarefas.
