@@ -76,7 +76,7 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 | Criar o design da tela de adição e edição de notas | Leticia |
 | Implementar o frontend de adição e edição de notas | Layla |
 | Criar tabela de notas de cada disciplina por usuário | Leticia |
-| Implementar backend para adicionar, salvar e excluir notas | Lucca |
+| Implementar backend para adicionar, salvar e excluir notas | Leticia, Lucca |
 | Integrar frontend com API para adicionar notas | Lucas |
 | Testar adição e exclusão de notas | Lucca |
 
