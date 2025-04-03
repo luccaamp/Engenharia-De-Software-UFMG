@@ -58,48 +58,51 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 | Criar a interface para alterar e-mail e senha| Layla, Leticia | 
 | Testes e validações| Lucca | 
 
-História #2: Como usuário, eu gostaria de gerenciar disciplinas e suas respectivas atividades avaliativas, podendo criar, editar e excluir ambas. 
-Tarefas e responsáveis:
-- Implementar o backend para gerenciar disciplinas e tarefas (criação, edição, exclusão, descrição e vencimento) [Lucas, Lucca]
-- Criar e configurar as tabelas de disciplinas e tarefas no banco de dados [Leticia]
-- Desenvolver o frontend para adicionar, editar e excluir disciplinas e tarefas [Layla]
-- Criar e implementar o design das telas de disciplinas e tarefas [Leticia, Layla]
-- Integrar o frontend com o backend para garantir o funcionamento das disciplinas e tarefas [Lucas, Lucca]
-- Implementar confirmações antes de deletar disciplinas e tarefas [Lucca]
-- Criar a funcionalidade de marcar tarefas como concluídas [Layla]
-- Garantir que a lista de disciplinas e tarefas seja atualizada após alterações [Lucas]
-- Testar todas as funcionalidades de disciplinas e tarefas (criação, edição, exclusão, descrição e vencimento) [Lucas, Lucca]
+### História #2: Como usuário, eu gostaria de gerenciar disciplinas e suas respectivas atividades avaliativas, podendo criar, editar e excluir ambas. 
+| Tarefa | Responsável |
+|--------|------------|
+| Implementar o backend para gerenciar disciplinas e tarefas (criação, edição, exclusão, descrição e vencimento) | Lucas, Lucca |
+| Criar e configurar as tabelas de disciplinas e tarefas no banco de dados | Leticia |
+| Desenvolver o frontend para adicionar, editar e excluir disciplinas e tarefas | Layla |
+| Criar e implementar o design das telas de disciplinas e tarefas | Leticia, Layla |
+| Integrar o frontend com o backend para garantir o funcionamento das disciplinas e tarefas | Lucas, Lucca |
+| Implementar confirmações antes de deletar disciplinas e tarefas | Lucca |
+| Criar a funcionalidade de marcar tarefas como concluídas | Layla |
+| Garantir que a lista de disciplinas e tarefas seja atualizada após alterações | Lucas |
+| Testar todas as funcionalidades de disciplinas e tarefas (criação, edição, exclusão, descrição e vencimento) | Lucas, Lucca |
 
-História #3: Como usuário, eu gostaria de adicionar, editar e deletar notas das tarefas.
-Tarefas e responsáveis:
-- Criar o design da tela de adição de notas [Leticia]
-- Implementar o frontend de adição de notas [Layla]
-- Criar tabela de notas de cada disciplina por usuário [Leticia]
-- Implementar backend para adicionar e salvar notas [Lucca]
-- Integrar frontend com API para adicionar notas [Lucas]
-- Testar adição de notas [Layla]
-- Criar o design da tela de edição de notas [Lucas]
-- Implementar o frontend de edição de notas [Layla]
-- Implementar backend para edição e exclusão de notas [Leticia]
-- Implementar confirmação antes de deletar notas [Layla]
-- Implementar a lógica de atualizar as notas após edição ou exclusão [Lucca]
-- Testar edição e deleção de notas [Lucca]
+### História #3: Como usuário, eu gostaria de adicionar, editar e deletar notas das tarefas.
+| Tarefa | Responsável |
+|--------|------------|
+| Criar o design da tela de adição de notas | Leticia |
+| Implementar o frontend de adição de notas | Layla |
+| Criar tabela de notas de cada disciplina por usuário | Leticia |
+| Implementar backend para adicionar e salvar notas | Lucca |
+| Integrar frontend com API para adicionar notas | Lucas |
+| Testar adição de notas | Layla |
+| Criar o design da tela de edição de notas | Lucas |
+| Implementar o frontend de edição de notas | Layla |
+| Implementar backend para edição e exclusão de notas | Leticia |
+| Implementar confirmação antes de deletar notas | Layla |
+| Implementar a lógica de atualizar as notas após edição ou exclusão | Lucca |
+| Testar edição e deleção de notas | Lucca |
 
-História #4: Como usuário, eu gostaria de acompanhar minhas notas graficamente e visualizar estatísticas detalhadas sobre meu desempenho acadêmico.
-Tarefas e responsáveis:
-- Criar o design de exibição de notas na tela principal [Lucas]
-- Implementar o frontend de exibição de notas na tela principal [Layla]
-- Criar componente gráfico para exibir notas [Leticia]
-- Implementar lógica para calcular média e evolução de notas [Leticia]
-- Integrar gráfico com backend para exibir dados [Lucca]
-- Testar a exibição correta dos gráficos com base nas notas [Lucca]
-- Criar design da tela de estatísticas de desempenho [Leticia]
-- Implementar o frontend das estatísticas [Layla]
-- Implementar backend para cálculo e fornecimento de dados de desempenho [Lucas]
-- Testar visualização de desempenho acadêmico [Lucca]
-- Criar design da tela de metas acadêmicas Lucas]
-- Implementar o frontend de metas [Layla]
-- Criar tabela de metas de cada disciplina e semestre por usuário [Leticia]
-- Implementar backend para salvar metas [Lucca]
-- Adicionar funcionalidade de atualizar e acompanhar o progresso das metas [Lucca]
-- Testar criação e acompanhamento de metas [Leticia]
+### História #4: Como usuário, eu gostaria de acompanhar minhas notas graficamente e visualizar estatísticas detalhadas sobre meu desempenho acadêmico.
+| Tarefa | Responsável |
+|--------|------------|
+| Criar o design de exibição de notas na tela principal | Lucas |
+| Implementar o frontend de exibição de notas na tela principal | Layla |
+| Criar componente gráfico para exibir notas | Leticia |
+| Implementar lógica para calcular média e evolução de notas | Leticia |
+| Integrar gráfico com backend para exibir dados | Lucca |
+| Testar a exibição correta dos gráficos com base nas notas | Lucca |
+| Criar design da tela de estatísticas de desempenho | Leticia |
+| Implementar o frontend das estatísticas | Layla |
+| Implementar backend para cálculo e fornecimento de dados de desempenho | Lucas |
+| Testar visualização de desempenho acadêmico | Lucca |
+| Criar design da tela de metas acadêmicas | Lucas |
+| Implementar o frontend de metas | Layla |
+| Criar tabela de metas de cada disciplina e semestre por usuário | Leticia |
+| Implementar backend para salvar metas | Lucca |
+| Adicionar funcionalidade de atualizar e acompanhar o progresso das metas | Lucca |
+| Testar criação e acompanhamento de metas | Leticia |
