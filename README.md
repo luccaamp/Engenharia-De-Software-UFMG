@@ -73,23 +73,17 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 ### História #3: Como usuário, eu gostaria de adicionar, editar e deletar notas das tarefas.
 | Tarefa | Responsável |
 |--------|------------|
-| Criar o design da tela de adição de notas | Leticia |
-| Implementar o frontend de adição de notas | Layla |
+| Criar o design da tela de adição e edição de notas | Leticia |
+| Implementar o frontend de adição e edição de notas | Layla |
 | Criar tabela de notas de cada disciplina por usuário | Leticia |
-| Implementar backend para adicionar e salvar notas | Lucca |
+| Implementar backend para adicionar, salvar e excluir notas | Lucca |
 | Integrar frontend com API para adicionar notas | Lucas |
-| Testar adição de notas | Layla |
-| Criar o design da tela de edição de notas | Lucas |
-| Implementar o frontend de edição de notas | Layla |
-| Implementar backend para edição e exclusão de notas | Leticia |
-| Implementar confirmação antes de deletar notas | Layla |
-| Implementar a lógica de atualizar as notas após edição ou exclusão | Lucca |
-| Testar edição e deleção de notas | Lucca |
+| Testar adição e exclusão de notas | Lucca |
 
 ### História #4: Como usuário, eu gostaria de acompanhar minhas notas graficamente e visualizar estatísticas detalhadas sobre meu desempenho acadêmico.
 | Tarefa | Responsável |
 |--------|------------|
-| Criar o design de exibição de notas na tela principal | Lucas |
+| Criar o design de exibição de notas na tela principal | Leticia |
 | Implementar o frontend de exibição de notas na tela principal | Layla |
 | Criar componente gráfico para exibir notas | Leticia |
 | Implementar lógica para calcular média e evolução de notas | Leticia |
