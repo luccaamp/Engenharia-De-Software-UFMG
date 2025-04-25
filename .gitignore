@@ -1,0 +1,19 @@
+# Python
+*.pyc
+__pycache__/
+
+# Ambiente Virtual
+venv/
+
+# Arquivos de Banco de Dados
+*.sqlite3
+
+# Arquivos de migração
+backend/accounts/migrations/
+backend/migrations/
+
+# Arquivos de configuração locais (se aplicável)
+*.env
+
+# Arquivos de log
+*.log
