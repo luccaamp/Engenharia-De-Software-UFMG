@@ -1,19 +1,19 @@
-# Python
+# Bytecode Python
 *.pyc
 __pycache__/
 
 # Ambiente Virtual
 venv/
 
-# Arquivos de Banco de Dados
+# Banco de Dados (caso use SQLite em testes locais)
 *.sqlite3
 
-# Arquivos de migração
-backend/accounts/migrations/
-backend/migrations/
+# Migrações (opcional ignorar se quiser versionar migrações)
+**/migrations/
+!**/migrations/__init__.py
 
-# Arquivos de configuração locais (se aplicável)
+# Configuração local (como variáveis de ambiente)
 *.env
 
-# Arquivos de log
+# Logs
 *.log
