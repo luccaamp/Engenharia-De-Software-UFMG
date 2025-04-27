@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../css/Signup.css'; 
+import '../css/Signup.css'; // Vamos usar um CSS básico depois, se quiser.
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/signup', { 
+      const response = await fetch('http://localhost:5000/signup', { // Ajuste a URL se precisar
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,22 +39,38 @@ function Signup() {
   };
 
   return (
-    <div id="webcrumbs" className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-[400px] min-h-[500px] bg-white rounded-lg shadow-lg p-6">
-        <h1 className="font-title text-3xl text-center mb-2">Cadastro</h1>
-        <p className="text-center text-lg mb-6">Crie sua conta para acessar conteúdos exclusivos.</p>
-        
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="username" className="font-semibold">Nome de usuário</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              className="border border-neutral-300 rounded-md p-2"
-              placeholder="Digite seu nome de usuário"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-       
+    <div className="signup-container">
+      <h2>Cadastro</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Nome de usuário"
+          value={formData.username}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Senha"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Cadastrar</button>
+      </form>
+      {message && <p>{message}</p>}
+    </div>
+  );
+}
+
+export default Signup;
