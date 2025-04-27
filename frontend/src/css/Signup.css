@@ -3,17 +3,14 @@
 
 /*! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com*/
 *,
-:after,
-:before {
+:after,:before {
   border: 0 solid #e5e7eb;
   box-sizing: border-box;
 }
-:after,
-:before {
+:after,:before {
   --tw-content: "";
 }
-:host,
-html {
+:host,html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   font-family:
@@ -43,12 +40,7 @@ hr {
 abbr:where([title]) {
   text-decoration: underline dotted;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-size: inherit;
   font-weight: inherit;
 }
@@ -60,10 +52,7 @@ b,
 strong {
   font-weight: bolder;
 }
-code,
-kbd,
-pre,
-samp {
+code,kbd,pre,samp {
   font-family:
     ui-monospace,
     SFMono-Regular,
@@ -80,8 +69,7 @@ samp {
 small {
   font-size: 80%;
 }
-sub,
-sup {
+sub,sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -98,11 +86,7 @@ table {
   border-color: inherit;
   text-indent: 0;
 }
-button,
-input,
-optgroup,
-select,
-textarea {
+button,input,optgroup,select,textarea {
   color: inherit;
   font-family: inherit;
   font-feature-settings: inherit;
@@ -114,14 +98,11 @@ textarea {
   margin: 0;
   padding: 0;
 }
-button,
-select {
+button,select {
   text-transform: none;
 }
-button,
-input:where([type="button"]),
-input:where([type="reset"]),
-input:where([type="submit"]) {
+button,input:where([type="button"]),
+input:where([type="reset"]),input:where([type="submit"]) {
   -webkit-appearance: button;
   appearance: button;
   background-color: transparent;
@@ -155,31 +136,16 @@ progress {
 summary {
   display: list-item;
 }
-blockquote,
-dd,
-dl,
-figure,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-p,
-pre {
+blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre {
   margin: 0;
 }
 fieldset {
   margin: 0;
 }
-fieldset,
-legend {
+fieldset,legend {
   padding: 0;
 }
-menu,
-ol,
-ul {
+menu,ol,ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -190,8 +156,7 @@ dialog {
 textarea {
   resize: vertical;
 }
-input::placeholder,
-textarea::placeholder {
+input::placeholder,textarea::placeholder {
   color: #9ca3af;
   opacity: 1;
 }
@@ -202,18 +167,10 @@ button {
 :disabled {
   cursor: default;
 }
-audio,
-canvas,
-embed,
-iframe,
-img,
-object,
-svg,
-video {
+audio,canvas,embed,iframe,img,object,svg,video {
   display: block;
 }
-img,
-video {
+img,video {
   height: auto;
   max-width: 100%;
 }
@@ -221,8 +178,7 @@ video {
   display: none;
 }
 *,
-:after,
-:before {
+:after,:before {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
