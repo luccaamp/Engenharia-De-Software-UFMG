@@ -9,4 +9,4 @@ router = APIRouter(
 
 @router.post("/")
 async def criar_grade(grade: Grade):
-    return await adicionar_grade(grade) 
+    return await adicionar_grade(grade)

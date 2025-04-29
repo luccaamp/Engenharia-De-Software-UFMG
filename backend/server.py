@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from routes.authRoutes import router as authRoutes
 from database import connect_to_mongo, close_mongo_connection
 from routes.gradeRoutes import router as gradeRoutes
+from routes.disciplinaRoutes import router as disciplinaRoutes
 
 app = FastAPI()
 
@@ -18,6 +19,7 @@ app.add_middleware(
 # incluir suas rotas
 app.include_router(authRoutes)
 app.include_router(gradeRoutes)
+app.include_router(disciplinaRoutes)
 
 @app.on_event("startup")
 async def startup_db_client():
