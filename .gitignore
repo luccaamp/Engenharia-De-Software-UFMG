@@ -1,0 +1,24 @@
+# Ignorar caches Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar ambiente virtual
+venv/
+
+# Ignorar configurações do VS Code (se usar)
+.vscode/
+
+# Ignorar pastas do Node.js
+node_modules/
+.cache/
+.babel-loader/
+
+# Ignorar arquivos de build frontend (React)
+build/
+dist/
+
+# Ignorar arquivos temporários de sistema
+.DS_Store
+Thumbs.db
