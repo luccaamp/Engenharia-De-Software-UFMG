@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 //import { Link, useNavigate } from 'react-router-dom'; 
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,16 @@ import { Link } from 'react-router-dom';
 
 import "../css/Principal.css";
 function Principal(){
-/*export const Component = () => {*/
+    /*export const Component = () => {*/
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        // Pega o username armazenado no localStorage
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            setUsername(storedUsername); // Define o username
+        }
+    }, []);
     return (
         <div id="webcrumbs">
             <div className="flex flex-col md:flex-row min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 font-sans">
@@ -70,7 +79,7 @@ function Principal(){
                                 className="h-10 w-10 rounded-full mr-3"
                             />
                             <div>
-                                <p className="font-medium">Maria Silva</p>
+                                <p className="font-medium">{username}</p>
                                 <p className="text-sm text-gray-500">Estudante</p>
                             </div>
                         </div>
@@ -83,7 +92,7 @@ function Principal(){
                     {/* Header */}
                     <header className="flex justify-between items-center mb-6">
                         <div>
-                            <h1 className="text-2xl md:text-3xl font-bold">Bem-vindo de volta, Seu Nome!</h1>
+                            <h1 className="text-2xl md:text-3xl font-bold">Bem-vindo de volta, {username}!</h1>
                             <p className="text-gray-500">Confira seu progresso acadêmico</p>
                         </div>
                         <div className="flex items-center space-x-4">
