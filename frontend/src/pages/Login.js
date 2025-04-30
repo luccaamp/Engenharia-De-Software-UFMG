@@ -91,8 +91,8 @@ function Login() {
               Crie uma
             </Link>
           </p>
-          <div className="mt-6 text-center space-y-4">
-            <a href="#" className="block text-sm text-purple-600 hover:underline">Esqueceu sua senha?</a>
+          <div className="forgot-password-link">
+            <Link to="/forgot-password">Esqueceu sua senha?</Link> {/* Link para página de recuperação */}
           </div>
         </div>
       </div>
