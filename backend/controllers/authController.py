@@ -286,13 +286,6 @@ async def redefinir_senha(request: NewPasswordRequest):
     if db is None:
         raise HTTPException(status_code=500, detail="Erro de conexão com o banco de dados.")
     
-    # Validação do código de verificação
-    codigo_correto = codigo_verificacao.get(request.email)
-    if not codigo_correto:
-        raise HTTPException(status_code=400, detail="Nenhum código foi enviado para este email.")
-    if request.code != codigo_correto:
-        raise HTTPException(status_code=400, detail="Código inválido ou expirado.")
-
     # Hashing seguro da senha
     hashed_password = bcrypt.hashpw(request.new_password.encode('utf-8'), bcrypt.gensalt())
 
@@ -309,8 +302,7 @@ async def redefinir_senha(request: NewPasswordRequest):
         # Remover código de verificação após sucesso
         codigo_verificacao.pop(request.email, None)
 
-        # Enviar notificação de sucesso
-        # Enviar email de confirmação com o novo template
+        # Enviar email de confirmação
         await enviar_confirmacao_senha_alterada(request.email)
 
         return {"message": "Senha alterada com sucesso"}

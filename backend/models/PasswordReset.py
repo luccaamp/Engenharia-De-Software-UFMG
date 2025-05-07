@@ -9,5 +9,4 @@ class CodeVerification(BaseModel):
 
 class NewPasswordRequest(BaseModel):
     email: EmailStr
-    code: str
     new_password: str
