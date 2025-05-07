@@ -27,7 +27,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Principal from './pages/Principal';
-import Estatisticas from './pages/Estatisticas';
 import Disciplinas from './pages/Disciplinas';
 
 function App() {
@@ -39,7 +38,6 @@ function App() {
 
         {/* Layout com navbar (rotas aninhadas) */}
           <Route path="/principal" element={<Principal />}>
-          <Route path="estatisticas" element={<Estatisticas />} />
           <Route path="disciplinas" element={<Disciplinas />} /> 
         </Route>
       </Routes>
