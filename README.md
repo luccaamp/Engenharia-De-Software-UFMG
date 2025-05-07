@@ -43,7 +43,7 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 9. Como usuário, eu gostaria de agrupar disciplinas por semestres.
 10. Como usuário, eu gostaria de receber notificações e lembretes, via email, sobre tarefas e prazos importantes.
 
-## BackLog do Sprint
+## Backlog do Sprint
 
 ### História #1: Como usuário, eu gostaria de me cadastrar na plataforma com login e senha, e ter a opção de alterar essas informações futuramente.
 | Tarefa | Responsável |
