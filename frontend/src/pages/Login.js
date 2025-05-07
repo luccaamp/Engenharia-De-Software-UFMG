@@ -27,6 +27,7 @@ function Login() {
       if (!response.ok) {
         setErrorMessage(data.detail || 'Erro ao fazer login.');
       } else {
+        localStorage.setItem('username', data.username); // salva nome no local storage mostra na pagina inicial
         navigate('/principal'); // Redireciona para a página principal
       }
     } catch (error) {
