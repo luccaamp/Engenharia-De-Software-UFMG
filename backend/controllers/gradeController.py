@@ -25,7 +25,7 @@ async def adicionar_grade(grade: Grade):
 
     return {"msg": "Nota adicionada com sucesso."}
 
-async def remover_grade(disciplina_id: str, tipo: str):
+async def remover_grade(disciplina_id: str, nota_id: str):
     db = get_db()
     if db is None:
         raise HTTPException(status_code=500, detail="Erro ao conectar com o banco de dados.")
@@ -34,7 +34,7 @@ async def remover_grade(disciplina_id: str, tipo: str):
 
     resultado = await disciplinas_collection.update_one(
         {"_id": ObjectId(disciplina_id)},
-        {"$pull": {"notas": {"tipo": tipo}}}  # Remove nota com campo "tipo" igual
+        {"$pull": {"notas": {"id": nota_id}}}
     )
 
     if resultado.modified_count == 0:
