@@ -48,7 +48,7 @@ function ForgotPasswordForm() {
           type="submit"
           className="w-full bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200 transform hover:-translate-y-0.5"
         >
-          Submit
+          Enviar
         </button>
       </form>
     </div>

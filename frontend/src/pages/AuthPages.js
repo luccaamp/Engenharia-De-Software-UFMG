@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm';
-import ForgotPasswordForm from './components/ForgotPasswordForm';
+import LoginForm from './componentsLogin/LoginForm';
+import RegisterForm from './componentsLogin/RegisterForm';
+import ForgotPasswordForm from './componentsLogin/ForgotPasswordForm';
 import '../css/Login.css';
 
 function AuthPage() {
