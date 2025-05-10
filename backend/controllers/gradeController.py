@@ -23,7 +23,7 @@ async def adicionar_grade(grade: Grade):
     if update_result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Erro ao adicionar a nota na disciplina.")
 
-    return {"msg": "Nota adicionada com sucesso."}
+    return {"msg": "Nota adicionada com sucesso.", "grade_id": grade.id}
 
 async def remover_grade(disciplina_id: str, nota_id: str):
     db = get_db()
