@@ -26,3 +26,21 @@ async def remover_disciplina(disciplina_id: str):
         raise HTTPException(status_code=404, detail="Disciplina não encontrada.")
 
     return {"msg": "Disciplina removida com sucesso."}
+
+from bson import ObjectId
+
+async def atualizar_disciplina(disciplina_id: str, dados_atualizados: dict):
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Erro ao conectar com o banco de dados.")
+
+    disciplinas_collection = db['disciplinas']
+    resultado = await disciplinas_collection.update_one(
+        {"_id": ObjectId(disciplina_id)},
+        {"$set": dados_atualizados}
+    )
+
+    if resultado.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Disciplina não encontrada.")
+
+    return {"msg": "Disciplina atualizada com sucesso."}
