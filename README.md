@@ -28,7 +28,7 @@ As principais features estão destacadas abaixo.
 
 ## Tecnologias Utilizadas  
 
-Para o frontend da plataforma, será utilizado React.js combinando com **Tailwind CSS**. Ja no backend, optou-se pela linguagem **Python**, utilizando o framework **Django** ou **FastAPI**. Por fim, o banco de dados será estruturado com o MySQL. 
+Para o frontend da plataforma, será utilizado React.js combinando com **Tailwind CSS**. Ja no backend, optou-se pela linguagem **Python**, enquanto o banco de dados será estruturado com o **MongoDB**. 
 
 ## Backlog do Produto
 
