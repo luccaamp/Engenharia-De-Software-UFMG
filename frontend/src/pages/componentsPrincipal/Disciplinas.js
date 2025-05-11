@@ -307,14 +307,7 @@ function Disciplinas() {
         <div className="relative flex flex-col min-h-screen">
             <div className="flex justify-between items-center p-4 border-b border-gray-200">
                 <h3 className="font-medium text-gray-700">Minhas Disciplinas</h3>
-                <button
-                    className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-all transform hover:scale-105"
-                    onClick={() => setMostrarModalDisciplina(true)}
-                >
-                    <span className="material-symbols-outlined text-sm"
-                        style={{ color: '#fff', paddingTop: '5px', fontSize: '25px', fontVariationSettings: "'wght' 200"}}
-                    >add</span>
-                </button>
+                
             </div>
 
             {/* Lista de Disciplinas */}
@@ -324,7 +317,7 @@ function Disciplinas() {
                         <div className="flex flex-col items-center justify-center h-[200px]">
                             <span className="material-symbols-outlined text-gray-400 text-4xl mb-2">menu_book</span>
                             <p className="text-gray-500 text-center">
-                                Nenhuma disciplina cadastrada. Clique no botão + para adicionar.
+                                Nenhuma disciplina cadastrada. Clique no botão Adicionar Disciplina para adicionar.
                             </p>
                         </div>
                     ) : (
@@ -354,7 +347,7 @@ function Disciplinas() {
                                         >
                                             <span
                                                 className="material-symbols-outlined"
-                                                style={{ color: '#fff', paddingTop: '4px', fontSize: '25px', fontVariationSettings: "'wght' 200"}}
+                                                style={{ color: '#fff', paddingTop: '4px', fontSize: '22px', fontVariationSettings: "'wght' 200"}}
                                             >
                                                 delete
                                             </span>
@@ -370,7 +363,7 @@ function Disciplinas() {
                                         >
                                             <span
                                                 className="material-symbols-outlined"
-                                                style={{ color: '#fff', paddingTop: '4px', fontSize: '25px', fontVariationSettings: "'wght' 200" }}
+                                                style={{ color: '#fff', paddingTop: '4px', fontSize: '22px', fontVariationSettings: "'wght' 200" }}
                                             >
                                                 edit
                                             </span>
@@ -380,6 +373,16 @@ function Disciplinas() {
                             ))}
                         </div>
                     )}
+                    
+                    {/* Botão no final */}
+                    {disciplinaSelecionada === null && (
+                    <button
+                        className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-1 rounded-md transition-all"
+                        onClick={() => setMostrarModalDisciplina(true)}
+                    >
+                        Adicionar Disciplina
+                    </button>
+                )}
                 </div>
             ) : (
                 // Painel de Atividades
@@ -396,12 +399,7 @@ function Disciplinas() {
                                 {disciplinas[disciplinaSelecionada].nome}
                             </h3>
                         </div>
-                        <button
-                            className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full"
-                            onClick={() => setMostrarModalAtividade(true)}
-                        >
-                            <span className="material-symbols-outlined text-sm">add</span>
-                        </button>
+                        
                     </div>
 
                     <div className="flex-1 overflow-auto p-3 space-y-3">
@@ -416,19 +414,49 @@ function Disciplinas() {
                                         <button
                                             className="text-red-500 hover:text-red-700"
                                             onClick={() => removerAtividade(idx)}
+                                            style={{
+                                                backgroundColor: '#cd191c',
+                                                borderRadius: '10px',
+                                                padding: '1px',
+                                                cursor: 'pointer',
+                                            }}                                            
                                         >
-                                            <span className="material-symbols-outlined">delete</span>
+                                            <span 
+                                                className="material-symbols-outlined"
+                                                style={{ color: '#fff', paddingTop: '4px', fontSize: '22px', fontVariationSettings: "'wght' 200"}}
+                                            >
+                                                delete</span>
                                         </button>
                                         <button
                                             className="text-blue-600 hover:text-blue-700"
                                             onClick={() => editarAtividade(idx)}
+                                            style={{
+                                                backgroundColor: '#19cd2b',
+                                                borderRadius: '10px',
+                                                padding: '1px',
+                                                cursor: 'pointer'
+                                            }}
                                         >
-                                            <span className="material-symbols-outlined">edit</span>
+                                            <span 
+                                                className="material-symbols-outlined"
+                                                style={{ color: '#fff', paddingTop: '4px', fontSize: '22px', fontVariationSettings: "'wght' 200" }}
+                                                >
+                                                    edit</span>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Botão ADICIONAR ATIVIDADE */}
+                    <div className="p-3 flex justify-center">
+                        <button
+                            className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-md transition-all"
+                            onClick={() => setMostrarModalAtividade(true)}
+                        >
+                            Adicionar Atividade
+                        </button>
                     </div>
 
                     <div className="p-3 border-t bg-gray-50 flex justify-between">
