@@ -42,13 +42,15 @@ function Disciplinas() {
                         try {
                             const res = await fetch(`http://localhost:8000/grades/usuario/${userId}/disciplina/${disciplina._id}`);
                             const atividades = res.ok ? await res.json() : [];
+                            console.log("Atividades recebidas:", atividades);
+                            
                             return {
                                 ...disciplina,
                                 atividades: atividades.map((a) => ({
                                     id: a.grade_id,
                                     nome: a.tipo,
                                     nota: a.valor,
-                                })),
+                                })), 
                             };
                         } catch (error) {
                             console.error("Erro ao buscar atividades:", error);
@@ -198,9 +200,7 @@ function Disciplinas() {
                     tipo: novaAtividadeNome,
                 }),
             });
-
             const data = await response.json();
-
             if (response.ok) {
 
                 const novaLista = [...disciplinas];
