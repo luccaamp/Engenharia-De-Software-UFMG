@@ -84,3 +84,17 @@ async def modificar_grade(disciplina_id: str, nota_id: str, grade_update: GradeU
         raise HTTPException(status_code=404, detail="Erro ao atualizar a nota.")
 
     return {"msg": "Nota modificada com sucesso."}
+
+# Função para buscar notas por disciplina
+async def buscar_notas_por_disciplina(disciplina_id: str):
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Erro ao conectar ao banco de dados.")
+
+    disciplinas_collection = db['disciplinas']
+    disciplina = await disciplinas_collection.find_one({"_id": ObjectId(disciplina_id)})
+
+    if not disciplina:
+        raise HTTPException(status_code=404, detail="Disciplina não encontrada.")
+
+    return disciplina.get("notas", [])

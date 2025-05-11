@@ -3,6 +3,7 @@ from models.disciplina import Disciplina
 from database import get_db
 from bson import ObjectId
 
+# Função para adicionar uma disciplina
 async def adicionar_disciplina(disciplina: Disciplina):
     db = get_db()
     if db is None:
@@ -13,6 +14,7 @@ async def adicionar_disciplina(disciplina: Disciplina):
     resultado = await disciplinas_collection.insert_one(disciplina.dict())
     return {"id": str(resultado.inserted_id)}
 
+# Função para remover uma disciplina
 async def remover_disciplina(disciplina_id: str):
     db = get_db()
     if db is None:
@@ -44,3 +46,14 @@ async def atualizar_disciplina(disciplina_id: str, dados_atualizados: dict):
         raise HTTPException(status_code=404, detail="Disciplina não encontrada.")
 
     return {"msg": "Disciplina atualizada com sucesso."}
+
+# Função para listar todas as disciplinas de um usuário
+async def buscar_disciplinas_por_usuario(user_id: str):
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Erro ao conectar ao banco de dados.")
+
+    disciplinas_collection = db['disciplinas']
+    disciplinas = await disciplinas_collection.find({"user_id": user_id}).to_list(1000)
+
+    return disciplinas
