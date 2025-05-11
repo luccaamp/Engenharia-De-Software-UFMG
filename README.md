@@ -28,7 +28,7 @@ As principais features estão destacadas abaixo.
 
 ## Tecnologias Utilizadas  
 
-Para o frontend da plataforma, será utilizado React.js combinando com **Tailwind CSS**. Ja no backend, optou-se pela linguagem **Python**, utilizando o framework **Django** ou **FastAPI**. Por fim, o banco de dados será estruturado com o MySQL. 
+Para o frontend da plataforma, será utilizado React.js combinando com **Tailwind CSS**. Ja no backend, optou-se pela linguagem **Python**, enquanto o banco de dados será estruturado com o **MongoDB**. 
 
 ## Backlog do Produto
 
@@ -43,7 +43,7 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 9. Como usuário, eu gostaria de agrupar disciplinas por semestres.
 10. Como usuário, eu gostaria de receber notificações e lembretes, via email, sobre tarefas e prazos importantes.
 
-## BackLog do Sprint
+## Backlog do Sprint
 
 ### História #1: Como usuário, eu gostaria de me cadastrar na plataforma com login e senha, e ter a opção de alterar essas informações futuramente.
 | Tarefa | Responsável |

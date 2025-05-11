@@ -23,7 +23,7 @@ function ResetPassword() {
       localStorage.removeItem('resetEmail');
 
       // Espera 2 segundos e redireciona para login
-      setTimeout(() => navigate('/login'), 2000);
+      setTimeout(() => navigate('/'), 2000);
     } else {
       setMessage('Erro ao alterar senha. Tente novamente.');
     }
