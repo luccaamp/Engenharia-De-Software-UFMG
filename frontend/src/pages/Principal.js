@@ -1,21 +1,56 @@
 import React, { useEffect, useState } from 'react';
-//import { Link, useNavigate } from 'react-router-dom'; 
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
-
 import "../css/Principal.css";
+
 function Principal(){
     /*export const Component = () => {*/
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // Pega o username armazenado no localStorage
+        // Pega username e email armazenados no localStorage
         const storedUsername = localStorage.getItem('username');
+        const storedEmail = localStorage.getItem('email');
+
         if (storedUsername) {
-            setUsername(storedUsername); // Define o username
+            setUsername(storedUsername); // Define username
+        }
+
+        if (storedEmail) {
+            setEmail(storedEmail); // Define email
         }
     }, []);
+
+    const handleLogout = async () => {
+        try {
+            // Obter o token do localStorage (assumindo que você armazena ele após o login)
+            const token = localStorage.getItem('access_token');
+            
+            const response = await fetch('http://localhost:8000/logout', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                // Limpar dados do usuário do localStorage
+                localStorage.removeItem('username');
+                localStorage.removeItem('access_token');
+                
+                // Redirecionar para a página de login
+                navigate('/login');
+            } else {
+                console.error('Erro ao fazer logout');
+            }
+        } catch (error) {
+            console.error('Erro na conexão com o servidor:', error);
+        }
+    };
+
     return (
         <div id="webcrumbs">
             <div className="flex flex-col md:flex-row min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 font-sans">
@@ -41,17 +76,16 @@ function Principal(){
                                     <span className="font-medium">Página Inicial</span>
                                 </a>
                             </li>
-                           <li>
-                                <Link to ="disciplinas"
+                            <li>
+                                <Link to="disciplinas"
                                     className="flex items-center p-3 text-gray-700 rounded-lg hover:bg-[#8507e8] hover:text-white group transition-all duration-200 hover:scale-[1.02]"
                                 >
                                     <span className="material-symbols-outlined mr-3">menu_book</span>
                                     <span className="font-medium">Disciplinas</span>
                                 </Link>
-                </li>
-                
+                            </li>
                             <li>
-                                <Link to ="estatisticas"
+                                <Link to="estatisticas"
                                     className="flex items-center p-3 text-gray-700 rounded-lg hover:bg-[#8507e8] hover:text-white group transition-all duration-200 hover:scale-[1.02]"
                                 >
                                     <span className="material-symbols-outlined mr-3">analytics</span>
@@ -67,6 +101,15 @@ function Principal(){
                                     <span className="font-medium">Configurações</span>
                                 </a>
                             </li>
+                            <li>
+                                <button
+                                    onClick={handleLogout}
+                                    className="w-full flex items-center p-3 text-gray-700 rounded-lg hover:bg-[#8507e8] hover:text-white group transition-all duration-200 hover:scale-[1.02]"
+                                >
+                                    <span className="material-symbols-outlined mr-3">logout</span>
+                                    <span className="font-medium">Sair</span>
+                                </button>
+                            </li>
                         </ul>
                     </nav>
 
@@ -74,7 +117,6 @@ function Principal(){
                         <div className="flex items-center">
                             <img
                                 src="https://avatars.dicebear.com/api/pixel-art/example.svg"
-
                                 alt="Avatar"
                                 className="h-10 w-10 rounded-full mr-3"
                             />
@@ -84,7 +126,6 @@ function Principal(){
                             </div>
                         </div>
                     </div>
-                    {/* Next: "Add logout button with icon" */}
                 </aside>
 
                 {/* Main Content */}
@@ -96,15 +137,9 @@ function Principal(){
                             <p className="text-gray-500">Confira seu progresso acadêmico</p>
                         </div>
                         <div className="flex items-center space-x-4">
-                            
                             <div className="relative">
                                 <details className="md:hidden">
                                     <summary className="list-none">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MzkyNDZ8MHwxfHNlYXJjaHwyfHxhdmF0YXJ8ZW58MHx8fHwxNzQ1ODYxMTAyfDA&ixlib=rb-4.0.3&q=80&w=1080"
-                                            alt="Avatar"
-                                            className="h-10 w-10 rounded-full cursor-pointer"
-                                        />
                                     </summary>
                                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
                                         <a href="#" className="block px-4 py-2 hover:bg-gray-100">
@@ -121,13 +156,11 @@ function Principal(){
                             </div>
                         </div>
                     </header>
- <Outlet />
-            {/* Dashboard Content apagado por enquanto*/}
-            
+                    <Outlet />
                 </main>
             </div>
         </div>
     )
 }
-export default Principal;
 
+export default Principal;

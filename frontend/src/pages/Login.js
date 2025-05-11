@@ -27,7 +27,13 @@ function Login() {
       if (!response.ok) {
         setErrorMessage(data.detail || 'Erro ao fazer login.');
       } else {
-        localStorage.setItem('username', data.username); // salva nome no local storage mostra na pagina inicial
+        console.log("Resposta da API:", data);
+        if (data.username && data.email) {
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('email', data.email);
+        } else {
+            console.error("Erro: username ou email não retornado pela API");
+        }
         navigate('/principal'); // Redireciona para a página principal
       }
     } catch (error) {
