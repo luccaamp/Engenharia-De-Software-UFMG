@@ -28,7 +28,7 @@ function Disciplinas() {
 
         const fetchDisciplinasComAtividades = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/disciplinas/${userId}`);
+                const response = await fetch(`http://localhost:8000/disciplinas/usuario/${userId}`);
                 const disciplinasData = await response.json();
 
                 if (!response.ok) {
@@ -40,7 +40,7 @@ function Disciplinas() {
                 const disciplinasComAtividades = await Promise.all(
                     disciplinasData.map(async (disciplina) => {
                         try {
-                            const res = await fetch(`http://localhost:8000/grades/${userId}/${disciplina._id}`);
+                            const res = await fetch(`http://localhost:8000/grades/usuario/${userId}/disciplina/${disciplina._id}`);
                             const atividades = res.ok ? await res.json() : [];
                             return {
                                 ...disciplina,
