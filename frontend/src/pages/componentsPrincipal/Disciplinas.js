@@ -26,22 +26,44 @@ function Disciplinas() {
     useEffect(() => {
         if (!userId) return;
 
-        const fetchDisciplinas = async () => {
+        const fetchDisciplinasComAtividades = async () => {
             try {
                 const response = await fetch(`http://localhost:8000/disciplinas/${userId}`);
-                const data = await response.json();
+                const disciplinasData = await response.json();
 
-                if (response.ok) {
-                    setDisciplinas(data);
-                } else {
-                    console.error("Erro ao carregar disciplinas:", data.detail);
+                if (!response.ok) {
+                    console.error("Erro ao carregar disciplinas:", disciplinasData.detail);
+                    return;
                 }
+
+                // Buscar atividades de cada disciplina
+                const disciplinasComAtividades = await Promise.all(
+                    disciplinasData.map(async (disciplina) => {
+                        try {
+                            const res = await fetch(`http://localhost:8000/grades/${userId}/${disciplina._id}`);
+                            const atividades = res.ok ? await res.json() : [];
+                            return {
+                                ...disciplina,
+                                atividades: atividades.map((a) => ({
+                                    id: a.grade_id,
+                                    nome: a.tipo,
+                                    nota: a.valor,
+                                })),
+                            };
+                        } catch (error) {
+                            console.error("Erro ao buscar atividades:", error);
+                            return { ...disciplina, atividades: [] };
+                        }
+                    })
+                );
+
+                setDisciplinas(disciplinasComAtividades);
             } catch (error) {
                 console.error("Erro na requisição de disciplinas:", error);
             }
         };
 
-        fetchDisciplinas();
+        fetchDisciplinasComAtividades();
     }, [userId]);
 
     const adicionarDisciplina = async () => {
@@ -69,9 +91,12 @@ function Disciplinas() {
                     atividades: [],
                 }]);
 
+                // Resetar estados
                 setNovaDisciplinaNome("");
                 setNovaDisciplinaSemestre("");
                 setMostrarModalDisciplina(false);
+                setModoEdicaoDisciplina(false);
+                setIndiceDisciplinaEdicao(null);
             } else {
                 alert(data.detail || "Erro ao adicionar disciplina.");
             }
@@ -91,83 +116,6 @@ function Disciplinas() {
 
     const selecionarDisciplina = (index) => {
         setDisciplinaSelecionada(index);
-    };
-
-    const adicionarAtividade = () => {
-        if (!novaAtividadeNome.trim()) return;
-
-        const novaLista = [...disciplinas];
-        novaLista[disciplinaSelecionada].atividades.push({
-            nome: novaAtividadeNome,
-            nota: Number(novaAtividadeNota),
-        });
-
-        setDisciplinas(novaLista);
-        setNovaAtividadeNome("");
-        setNovaAtividadeNota("");
-        setMostrarModalAtividade(false);
-    };
-
-    const editarAtividade = (index) => {
-        const atv = disciplinas[disciplinaSelecionada].atividades[index];
-        setNovaAtividadeNome(atv.nome);
-        setNovaAtividadeNota(atv.nota);
-        setIndiceAtividadeEdicao(index);
-        setModoEdicaoAtividade(true);
-        setMostrarModalAtividade(true);
-    };
-
-    const salvarAtividade = () => {
-        if (!novaAtividadeNome.trim()) return;
-
-        const novaLista = [...disciplinas];
-        const atividades = novaLista[disciplinaSelecionada].atividades;
-
-        if (modoEdicaoAtividade && indiceAtividadeEdicao !== null) {
-            atividades[indiceAtividadeEdicao] = {
-                nome: novaAtividadeNome,
-                nota: Number(novaAtividadeNota)
-            };
-        } else {
-            atividades.push({
-                nome: novaAtividadeNome,
-                nota: Number(novaAtividadeNota),
-            });
-        }
-
-        setDisciplinas(novaLista);
-        setNovaAtividadeNome("");
-        setNovaAtividadeNota("");
-        setMostrarModalAtividade(false);
-    };
-
-    const removerAtividade = (atividadeIndex) => {
-        const novaLista = [...disciplinas];
-        novaLista[disciplinaSelecionada].atividades.splice(atividadeIndex, 1);
-        setDisciplinas(novaLista);
-    };
-
-    const removerDisciplina = async (index) => {
-        const disciplinaId = disciplinas[index]._id;
-
-        try {
-            const response = await fetch(`http://localhost:8000/disciplinas/${disciplinaId}`, {
-                method: "DELETE",
-            });
-
-            if (response.ok) {
-                const novaLista = [...disciplinas];
-                novaLista.splice(index, 1);
-                setDisciplinas(novaLista);
-
-                if (disciplinaSelecionada === index) setDisciplinaSelecionada(null);
-            } else {
-                const data = await response.json();
-                alert(data.detail || "Erro ao remover disciplina.");
-            }
-        } catch (error) {
-            console.error("Erro ao remover disciplina:", error);
-        }
     };
 
     const editarDisciplinaNoBanco = async () => {
@@ -195,12 +143,159 @@ function Disciplinas() {
                     ...dadosAtualizados
                 };
                 setDisciplinas(novaLista);
+                // Resetar estados
                 setMostrarModalDisciplina(false);
+                setModoEdicaoDisciplina(false);
+                setIndiceDisciplinaEdicao(null);
+                setNovaDisciplinaNome("");
+                setNovaDisciplinaSemestre("");
             } else {
                 alert(data.detail || "Erro ao atualizar disciplina.");
             }
         } catch (error) {
             console.error("Erro ao atualizar disciplina:", error);
+        }
+    };
+
+    const removerDisciplina = async (index) => {
+        const disciplinaId = disciplinas[index]._id;
+
+        try {
+            const response = await fetch(`http://localhost:8000/disciplinas/${disciplinaId}`, {
+                method: "DELETE",
+            });
+
+            if (response.ok) {
+                const novaLista = [...disciplinas];
+                novaLista.splice(index, 1);
+                setDisciplinas(novaLista);
+
+                if (disciplinaSelecionada === index) setDisciplinaSelecionada(null);
+            } else {
+                const data = await response.json();
+                alert(data.detail || "Erro ao remover disciplina.");
+            }
+        } catch (error) {
+            console.error("Erro ao remover disciplina:", error);
+        }
+    };
+
+    const adicionarAtividade = async () => {
+        if (!novaAtividadeNome.trim() || !novaAtividadeNota.trim()) return;
+
+        const disciplina = disciplinas[disciplinaSelecionada];
+
+        try {
+            const response = await fetch("http://localhost:8000/grades", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    disciplina_id: disciplina._id,
+                    valor: Number(novaAtividadeNota),
+                    tipo: novaAtividadeNome,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+
+                const novaLista = [...disciplinas];
+                novaLista[disciplinaSelecionada].atividades.push({
+                    id: data.grade_id,
+                    nome: novaAtividadeNome,
+                    nota: Number(novaAtividadeNota),
+                });
+                
+                setDisciplinas(novaLista);
+                setNovaAtividadeNome("");
+                setNovaAtividadeNota("");
+                setMostrarModalAtividade(false);
+                setModoEdicaoAtividade(false);
+                setIndiceAtividadeEdicao(null);
+            } else {
+                alert(data.detail || "Erro ao adicionar atividade.");
+            }
+        } catch (error) {
+            console.error("Erro ao adicionar atividade:", error);
+        }
+    };
+
+    const editarAtividade = (index) => {
+        const atv = disciplinas[disciplinaSelecionada].atividades[index];
+        setNovaAtividadeNome(atv.nome);
+        setNovaAtividadeNota(atv.nota);
+        setIndiceAtividadeEdicao(index);
+        setModoEdicaoAtividade(true);
+        setMostrarModalAtividade(true);
+    };
+
+    const salvarAtividade = async () => {
+        if (!novaAtividadeNome.trim() || !novaAtividadeNota.trim()) return;
+
+        const novaLista = [...disciplinas];
+        const atividades = novaLista[disciplinaSelecionada].atividades;
+
+        if (modoEdicaoAtividade && indiceAtividadeEdicao !== null) {
+            const atividade = atividades[indiceAtividadeEdicao];
+            const notaId = atividade.id;
+
+            try {
+                const response = await fetch(`http://localhost:8000/grades/${disciplinas[disciplinaSelecionada]._id}/${notaId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        valor: Number(novaAtividadeNota),
+                        tipo: novaAtividadeNome
+                    })
+                });
+
+                if (response.ok) {
+                    atividades[indiceAtividadeEdicao] = {
+                        ...atividade,
+                        nome: novaAtividadeNome,
+                        nota: Number(novaAtividadeNota)
+                    };
+                    setDisciplinas(novaLista);
+                    setNovaAtividadeNome(""); 
+                    setNovaAtividadeNota(""); 
+                    setMostrarModalAtividade(false);
+                    setModoEdicaoAtividade(false);
+                    setIndiceAtividadeEdicao(null);  
+                } else {
+                    const data = await response.json();
+                    alert(data.detail || "Erro ao editar atividade.");
+                }
+            } catch (error) {
+                console.error("Erro ao editar atividade:", error);
+            }
+        }
+    };
+
+    const removerAtividade = async (atividadeIndex) => {
+        const atividade = disciplinas[disciplinaSelecionada].atividades[atividadeIndex];
+        const notaId = atividade.id;
+
+        try {
+            const response = await fetch(`http://localhost:8000/grades/${disciplinas[disciplinaSelecionada]._id}/${notaId}`, {
+                method: "DELETE",
+            });
+
+            if (response.ok) {
+                const novaLista = [...disciplinas];
+                novaLista[disciplinaSelecionada].atividades.splice(atividadeIndex, 1);
+                setDisciplinas(novaLista);
+            } else {
+                const data = await response.json();
+                alert(data.detail || "Erro ao remover atividade.");
+            }
+        } catch (error) {
+            console.error("Erro ao remover atividade:", error);
         }
     };
 
@@ -384,7 +479,13 @@ function Disciplinas() {
                             </button>
                             <button
                                 className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
-                                onClick={modoEdicaoDisciplina ? editarDisciplinaNoBanco : adicionarDisciplina}
+                                onClick={() => {
+                                        if (modoEdicaoDisciplina) {
+                                            editarDisciplinaNoBanco();
+                                        } else {
+                                            adicionarDisciplina();
+                                        }
+                                    }}
                                 >
                                 {modoEdicaoDisciplina ? "Salvar" : "Adicionar"}
                             </button>
@@ -434,7 +535,13 @@ function Disciplinas() {
                             </button>
                             <button
                                 className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
-                                onClick={salvarAtividade}
+                                onClick={() => {
+                                    if (modoEdicaoAtividade) {
+                                        salvarAtividade();  // Se estiver em modo de edição, chama salvarAtividade.
+                                    } else {
+                                        adicionarAtividade();  // Se não, chama adicionarAtividade.
+                                    }
+                                }}
                             >
                                 {modoEdicaoAtividade ? "Salvar" : "Adicionar"}
                             </button>
