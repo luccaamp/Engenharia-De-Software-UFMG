@@ -36,9 +36,11 @@ function Principal() {
             });
 
             if (response.ok) {
-                localStorage.removeItem('username');
-                localStorage.removeItem('access_token');
-                navigate('/login');
+                //localStorage.removeItem('username');
+                //localStorage.removeItem('access_token');
+                // Limpa todo o localStorage
+                localStorage.clear();
+                navigate('/'); // em "App.js" a página de login já está mapeada para a rota raiz
             } else {
                 console.error('Erro ao fazer logout');
             }

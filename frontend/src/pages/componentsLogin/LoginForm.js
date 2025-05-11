@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 
 function LoginForm({ setActiveTab }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (e) => {
@@ -23,8 +24,14 @@ function LoginForm({ setActiveTab }) {
       if (!response.ok) {
         setErrorMessage(data.detail || 'Erro ao fazer login.');
       } else {
-        localStorage.setItem('username', data.username);
-        navigate('/principal');
+        console.log("Resposta da API:", data);
+        if (data.username && data.email) {
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('email', data.email);
+        } else {
+            console.error("Erro: username ou email não retornado pela API");
+        }
+        navigate('/principal'); // Redireciona para a página principal
       }
     } catch (error) {
       setErrorMessage('Erro na conexão com o servidor.');
