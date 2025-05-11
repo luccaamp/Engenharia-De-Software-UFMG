@@ -24,7 +24,7 @@ async def adicionar_grade(grade: Grade):
     if update_result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Erro ao adicionar a nota na disciplina.")
 
-    return {"msg": "Nota adicionada com sucesso.", "grade_id": grade.id}
+    return {"msg": "Nota adicionada com sucesso.", "grade_id": str(grade.id)}
 
 # Função para remover nota
 async def remover_grade(disciplina_id: str, nota_id: str):
@@ -84,3 +84,21 @@ async def modificar_grade(disciplina_id: str, nota_id: str, grade_update: GradeU
         raise HTTPException(status_code=404, detail="Erro ao atualizar a nota.")
 
     return {"msg": "Nota modificada com sucesso."}
+
+# Função para listar as notas de uma disciplina de um usuário
+async def listar_notas_por_disciplina(user_id: str, disciplina_id: str):
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Erro ao conectar com o banco de dados.")
+
+    disciplinas_collection = db['disciplinas']
+
+    disciplina = await disciplinas_collection.find_one({
+        "_id": ObjectId(disciplina_id),
+        "user_id": user_id
+    })
+
+    if not disciplina:
+        raise HTTPException(status_code=404, detail="Disciplina não encontrada.")
+
+    return disciplina.get("notas", [])

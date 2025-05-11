@@ -57,7 +57,12 @@ function Principal() {
                 {/* Main Content */}
                 <div className="flex-1 p-8">
                     <header className="mb-8 flex justify-between items-center">
-                        <h1 className="text-3xl font-bold text-gray-800">Bem-vindo, {username}!</h1>
+                        <h1 className="text-3xl font-bold text-gray-800">
+                            {selectedPage === 'Página Inicial' && 'Bem-vindo, ' + username + '!'}
+                            {selectedPage === 'Disciplinas' && 'Disciplinas'}
+                            {selectedPage === 'Estatísticas' && 'Estatísticas'}
+                            {selectedPage === 'Configurações' && 'Configurações'}
+                        </h1>
                         <div className="flex items-center space-x-4">
                             <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all duration-200">
                                 <span className="material-symbols-outlined">notifications</span>
@@ -67,7 +72,6 @@ function Principal() {
                             </div>
                         </div>
                     </header>
-
                     {/* Exibindo o conteúdo baseado no selectedPage */}
                     {selectedPage === 'Página Inicial' && <PaginaInicial />}
                     {selectedPage === 'Disciplinas' && <Disciplinas />}
