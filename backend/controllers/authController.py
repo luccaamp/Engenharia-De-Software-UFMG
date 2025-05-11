@@ -3,6 +3,7 @@ import string
 from fastapi import APIRouter, HTTPException
 from models.User import UserCreate, UserLogin
 from models.PasswordReset import EmailRequest, CodeVerification, NewPasswordRequest
+from models.profile import ChangeEmailRequest, ChangePasswordRequest, DeleteAccountRequest
 from database import get_db
 import bcrypt
 import os
@@ -538,3 +539,90 @@ async def redefinir_senha(request: NewPasswordRequest):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro interno ao redefinir a senha: {str(e)}")
+
+
+@router.put("/profile/change-email")
+async def change_email(
+    request: ChangeEmailRequest, 
+    current_user: dict = Depends(get_current_user)
+):
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Banco de dados não conectado.")
+    
+    # Verificar se o novo email já está em uso
+    existing_user = await db['DadosPessoais'].find_one({"email": request.new_email})
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Este email já está em uso por outra conta.")
+    
+    # Atualizar o email
+    await db['DadosPessoais'].update_one(
+        {"email": current_user["email"]},
+        {"$set": {"email": request.new_email}}
+    )
+    
+    # Criar novo token com o novo email
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": request.new_email}, expires_delta=access_token_expires
+    )
+    
+    return {
+        "message": "Email alterado com sucesso!",
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
+
+
+@router.put("/profile/change-password")
+async def change_password(
+    request: ChangePasswordRequest,
+    current_user: dict = Depends(get_current_user)
+):
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Banco de dados não conectado.")
+    
+    if not bcrypt.checkpw(request.current_password.encode(), current_user["password"].encode()):
+        raise HTTPException(status_code=400, detail="Senha atual incorreta")
+    
+    hashed = bcrypt.hashpw(request.new_password.encode(), bcrypt.gensalt())
+
+    # Atualizar a senha
+    await db['DadosPessoais'].update_one(
+        {"email": current_user["email"]},
+        {"$set": {"password": hashed.decode('utf-8')}}
+    )
+    
+    # Enviar email de confirmação
+    await enviar_confirmacao_senha_alterada(current_user["email"])
+    
+    return {"message": "Senha alterada com sucesso!"}
+
+
+@router.delete("/profile/delete-account")
+async def delete_account(
+    request: DeleteAccountRequest,
+    current_user: dict = Depends(get_current_user)
+):
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Banco de dados não conectado.")
+    
+    # Verificar a senha antes de deletar
+    if not bcrypt.checkpw(
+        request.password.encode('utf-8'), 
+        current_user["password"].encode('utf-8')
+    ):
+        raise HTTPException(status_code=400, detail="Senha incorreta. A conta não foi deletada.")
+    
+    # Deletar a conta
+    result = await db['DadosPessoais'].delete_one({"email": current_user["email"]})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=400, detail="Falha ao deletar a conta.")
+    
+    return {
+        "message": "Conta deletada com sucesso.", 
+        "redirect": "/login"
+    }
