@@ -50,7 +50,10 @@ async def login(user: UserLogin):
     if not bcrypt.checkpw(user.password.encode('utf-8'), existing_user["password"].encode('utf-8')):
         raise HTTPException(status_code=400, detail="Senha incorreta.")
 
-    return {"message": "Login realizado com sucesso!"}
+    return {
+        "message": "Login realizado com sucesso!",
+        "email": existing_user["email"]
+    }
 
 
 def gerar_codigo():

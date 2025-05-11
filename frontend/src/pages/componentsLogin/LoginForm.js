@@ -23,7 +23,7 @@ function LoginForm({ setActiveTab }) {
       if (!response.ok) {
         setErrorMessage(data.detail || 'Erro ao fazer login.');
       } else {
-        localStorage.setItem('username', data.username);
+        localStorage.setItem("user_id", data.email);
         navigate('/principal');
       }
     } catch (error) {

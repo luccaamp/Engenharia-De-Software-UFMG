@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Disciplinas() {
     const [disciplinas, setDisciplinas] = useState([]);
@@ -21,26 +21,63 @@ function Disciplinas() {
     const [modoEdicaoAtividade, setModoEdicaoAtividade] = useState(false);
     const [indiceAtividadeEdicao, setIndiceAtividadeEdicao] = useState(null);
 
-    const adicionarDisciplina = () => {
+    const userId = localStorage.getItem("user_id");
+
+    useEffect(() => {
+        if (!userId) return;
+
+        const fetchDisciplinas = async () => {
+            try {
+                const response = await fetch(`http://localhost:8000/disciplinas/${userId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    setDisciplinas(data);
+                } else {
+                    console.error("Erro ao carregar disciplinas:", data.detail);
+                }
+            } catch (error) {
+                console.error("Erro na requisição de disciplinas:", error);
+            }
+        };
+
+        fetchDisciplinas();
+    }, [userId]);
+
+    const adicionarDisciplina = async () => {
         if (!novaDisciplinaNome.trim()) return;
+        try {
+            const response = await fetch("http://localhost:8000/disciplinas", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    nome: novaDisciplinaNome,
+                    semestre: novaDisciplinaSemestre                    
+                })
+            });
 
-        setDisciplinas([
-            ...disciplinas,
-            {
-                nome: novaDisciplinaNome,
-                semestre: novaDisciplinaSemestre,
-                atividades: [],
-            },
-        ]);
+            const data = await response.json();
 
-        setNovaDisciplinaNome("");
-        setNovaDisciplinaSemestre("");
-        setMostrarModalDisciplina(false);
-    };
+            if (response.ok) {
+                setDisciplinas([...disciplinas, {
+                    _id: data.id,
+                    nome: novaDisciplinaNome,
+                    semestre: novaDisciplinaSemestre,
+                    atividades: [],
+                }]);
 
-    const selecionarDisciplina = (index) => {
-        setDisciplinaSelecionada(index);
-        setMostrarModalAtividade(false);  // Fechar a guia de atividades ao voltar para a disciplina
+                setNovaDisciplinaNome("");
+                setNovaDisciplinaSemestre("");
+                setMostrarModalDisciplina(false);
+            } else {
+                alert(data.detail || "Erro ao adicionar disciplina.");
+            }
+        } catch (error) {
+            console.error("Erro ao adicionar disciplina:", error);
+        }
     };
 
     const editarDisciplina = (index) => {
@@ -52,30 +89,8 @@ function Disciplinas() {
         setMostrarModalDisciplina(true);
     };
 
-    const salvarDisciplina = () => {
-        if (!novaDisciplinaNome.trim()) return;
-
-        const novaLista = [...disciplinas];
-        if (modoEdicaoDisciplina && indiceDisciplinaEdicao !== null) {
-            novaLista[indiceDisciplinaEdicao] = {
-                ...novaLista[indiceDisciplinaEdicao],
-                nome: novaDisciplinaNome,
-                semestre: novaDisciplinaSemestre
-            };
-        } else {
-            novaLista.push({
-                nome: novaDisciplinaNome,
-                semestre: novaDisciplinaSemestre,
-                atividades: [],
-            });
-        }
-
-        setDisciplinas(novaLista);
-        setNovaDisciplinaNome("");
-        setNovaDisciplinaSemestre("");
-        setMostrarModalDisciplina(false);
-        setModoEdicaoDisciplina(false);
-        setIndiceDisciplinaEdicao(null);
+    const selecionarDisciplina = (index) => {
+        setDisciplinaSelecionada(index);
     };
 
     const adicionarAtividade = () => {
@@ -132,11 +147,61 @@ function Disciplinas() {
         setDisciplinas(novaLista);
     };
 
-    const removerDisciplina = (index) => {
-        const novaLista = [...disciplinas];
-        novaLista.splice(index, 1);
-        setDisciplinas(novaLista);
-        if (disciplinaSelecionada === index) setDisciplinaSelecionada(null);
+    const removerDisciplina = async (index) => {
+        const disciplinaId = disciplinas[index]._id;
+
+        try {
+            const response = await fetch(`http://localhost:8000/disciplinas/${disciplinaId}`, {
+                method: "DELETE",
+            });
+
+            if (response.ok) {
+                const novaLista = [...disciplinas];
+                novaLista.splice(index, 1);
+                setDisciplinas(novaLista);
+
+                if (disciplinaSelecionada === index) setDisciplinaSelecionada(null);
+            } else {
+                const data = await response.json();
+                alert(data.detail || "Erro ao remover disciplina.");
+            }
+        } catch (error) {
+            console.error("Erro ao remover disciplina:", error);
+        }
+    };
+
+    const editarDisciplinaNoBanco = async () => {
+        const disciplinaId = disciplinas[indiceDisciplinaEdicao]._id;
+        const dadosAtualizados = {
+            nome: novaDisciplinaNome,
+            semestre: novaDisciplinaSemestre,
+        };
+
+        try {
+            const response = await fetch(`http://localhost:8000/disciplinas/${disciplinaId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dadosAtualizados)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                const novaLista = [...disciplinas];
+                novaLista[indiceDisciplinaEdicao] = {
+                    ...novaLista[indiceDisciplinaEdicao],
+                    ...dadosAtualizados
+                };
+                setDisciplinas(novaLista);
+                setMostrarModalDisciplina(false);
+            } else {
+                alert(data.detail || "Erro ao atualizar disciplina.");
+            }
+        } catch (error) {
+            console.error("Erro ao atualizar disciplina:", error);
+        }
     };
 
     const totalNota = disciplinaSelecionada !== null
@@ -144,14 +209,16 @@ function Disciplinas() {
         : 0;
 
     return (
-        <div className="relative flex flex-col h-full">
+        <div className="relative flex flex-col min-h-screen">
             <div className="flex justify-between items-center p-4 border-b border-gray-200">
                 <h3 className="font-medium text-gray-700">Minhas Disciplinas</h3>
                 <button
                     className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-all transform hover:scale-105"
                     onClick={() => setMostrarModalDisciplina(true)}
                 >
-                    <span className="material-symbols-outlined text-sm">add</span>
+                    <span className="material-symbols-outlined text-sm"
+                        style={{ color: '#fff', paddingTop: '5px', fontSize: '25px', fontVariationSettings: "'wght' 200"}}
+                    >add</span>
                 </button>
             </div>
 
@@ -182,16 +249,36 @@ function Disciplinas() {
                                     </div>
                                     <div className="flex space-x-2">
                                         <button
-                                            className="text-red-500 hover:text-red-700"
                                             onClick={() => removerDisciplina(idx)}
+                                            style={{
+                                                backgroundColor: '#cd191c',
+                                                borderRadius: '10px',
+                                                padding: '1px',
+                                                cursor: 'pointer',
+                                            }}
                                         >
-                                            <span className="material-symbols-outlined">delete</span>
+                                            <span
+                                                className="material-symbols-outlined"
+                                                style={{ color: '#fff', paddingTop: '4px', fontSize: '25px', fontVariationSettings: "'wght' 200"}}
+                                            >
+                                                delete
+                                            </span>
                                         </button>
                                         <button
-                                            className="text-blue-600 hover:text-blue-700"
                                             onClick={() => editarDisciplina(idx)}
+                                            style={{
+                                                backgroundColor: '#19cd2b',
+                                                borderRadius: '10px',
+                                                padding: '1px',
+                                                cursor: 'pointer'
+                                            }}
                                         >
-                                            <span className="material-symbols-outlined">edit</span>
+                                            <span
+                                                className="material-symbols-outlined"
+                                                style={{ color: '#fff', paddingTop: '4px', fontSize: '25px', fontVariationSettings: "'wght' 200" }}
+                                            >
+                                                edit
+                                            </span>
                                         </button>
                                     </div>
                                 </div>
@@ -258,7 +345,7 @@ function Disciplinas() {
 
             {/* Modal Disciplina */}
             {mostrarModalDisciplina && (
-                <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center z-10">
+                <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg shadow-xl border w-[300px]">
                         <div className="p-4 border-b border-gray-200">
                             <h3 className="font-medium">{modoEdicaoDisciplina ? "Editar Disciplina" : "Adicionar Disciplina"}</h3>
@@ -266,87 +353,97 @@ function Disciplinas() {
                         <div className="p-4 space-y-4">
                             <div>
                                 <label className="block text-sm text-gray-600 mb-1">Nome da Disciplina</label>
-                                <input
-                                    type="text"
-                                    value={novaDisciplinaNome}
-                                    onChange={(e) => setNovaDisciplinaNome(e.target.value)}
-                                    className="w-full p-2 border rounded-md"
-                                    placeholder="Ex: Matemática"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm text-gray-600 mb-1">Semestre (opcional)</label>
-                                <input
-                                    type="text"
-                                    value={novaDisciplinaSemestre}
-                                    onChange={(e) => setNovaDisciplinaSemestre(e.target.value)}
-                                    className="w-full p-2 border rounded-md"
-                                    placeholder="Ex: 2024/1 ou 2º semestre"
-                                />
-                            </div>
+                            <input
+                                type="text"
+                                className="border border-gray-300 rounded-md p-2 w-full"
+                                value={novaDisciplinaNome}
+                                onChange={(e) => setNovaDisciplinaNome(e.target.value)}
+                            />
                         </div>
-                        <div className="p-4 border-t flex justify-end gap-2">
+                        <div>
+                            <label className="block text-sm text-gray-600 mb-1">Semestre</label>
+                            <input
+                                type="text"
+                                className="border border-gray-300 rounded-md p-2 w-full"
+                                value={novaDisciplinaSemestre}
+                                onChange={(e) => setNovaDisciplinaSemestre(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex justify-between mt-4">
                             <button
                                 className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
-                                onClick={() => setMostrarModalDisciplina(false)}
+                                onClick={() => {
+                                    setMostrarModalDisciplina(false);
+                                    setModoEdicaoDisciplina(false);
+                                    setIndiceDisciplinaEdicao(null);
+                                    setNovaDisciplinaNome("");
+                                    setNovaDisciplinaSemestre("");
+                                }}
+                                >
+                                Cancelar
+                            </button>
+                            <button
+                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+                                onClick={modoEdicaoDisciplina ? editarDisciplinaNoBanco : adicionarDisciplina}
+                                >
+                                {modoEdicaoDisciplina ? "Salvar" : "Adicionar"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )}
+        {/* Modal Atividade */}
+        {mostrarModalAtividade && (
+            <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
+                <div className="bg-white rounded-lg shadow-xl border w-[300px]">
+                    <div className="p-4 border-b border-gray-200">
+                        <h3 className="font-medium">{modoEdicaoAtividade ? "Editar Atividade" : "Adicionar Atividade"}</h3>
+                    </div>
+                    <div className="p-4 space-y-4">
+                        <div>
+                            <label className="block text-sm text-gray-600 mb-1">Nome da Atividade</label>
+                            <input
+                                type="text"
+                                className="border border-gray-300 rounded-md p-2 w-full"
+                                value={novaAtividadeNome}
+                                onChange={(e) => setNovaAtividadeNome(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm text-gray-600 mb-1">Nota</label>
+                            <input
+                                type="number"
+                                className="border border-gray-300 rounded-md p-2 w-full"
+                                value={novaAtividadeNota}
+                                onChange={(e) => setNovaAtividadeNota(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex justify-between mt-4">
+                            <button
+                                className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                                onClick={() => {
+                                    setMostrarModalAtividade(false);
+                                    setModoEdicaoAtividade(false);
+                                    setIndiceAtividadeEdicao(null);
+                                    setNovaAtividadeNome("");
+                                    setNovaAtividadeNota("");
+                                }}
                             >
                                 Cancelar
                             </button>
                             <button
                                 className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
-                                onClick={salvarDisciplina}
+                                onClick={salvarAtividade}
                             >
-                                {modoEdicaoDisciplina ? "Atualizar" : "Salvar"}
+                                {modoEdicaoAtividade ? "Salvar" : "Adicionar"}
                             </button>
                         </div>
                     </div>
                 </div>
-            )}
-
-            {/* Modal Atividade */}
-            {mostrarModalAtividade && (
-                <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center z-10">
-                    <div className="bg-white rounded-lg shadow-xl border w-[300px]">
-                        <div className="p-4 border-b">
-                            <h3 className="font-medium">{modoEdicaoAtividade ? "Editar Atividade" : "Adicionar Atividade"}</h3>
-                        </div>
-                        <div className="p-4 space-y-4">
-                            <div>
-                                <label className="block text-sm text-gray-600 mb-1">Nome da Atividade</label>
-                                <input
-                                    type="text"
-                                    value={novaAtividadeNome}
-                                    onChange={(e) => setNovaAtividadeNome(e.target.value)}
-                                    className="w-full p-2 border rounded-md"
-                                    placeholder="Ex: Prova Final"
-                                    />
-                                </div>
-                            <div>
-                        <label className="block text-sm text-gray-600 mb-1">Nota</label>
-                            <input
-                                type="number"
-                                value={novaAtividadeNota}
-                                onChange={(e) => setNovaAtividadeNota(e.target.value)}
-                                className="w-full p-2 border rounded-md"
-                                placeholder="Ex: 85"
-                                />
-                            </div>
-                        </div>
-                        <div className="p-4 border-t flex justify-end gap-2">
-                            <button
-                                className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
-                                onClick={() => setMostrarModalAtividade(false)}
-                                >
-                                Cancelar
-                            </button>
-                            <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md" onClick={salvarAtividade} >
-                                {modoEdicaoAtividade ? "Atualizar" : "Salvar"}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
-        </div>
+            </div>
+        )}
+    </div>
     );
 }
 
