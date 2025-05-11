@@ -1,7 +1,12 @@
 from fastapi import APIRouter
 from models.disciplina import Disciplina
 from fastapi import Body
-from controllers.disciplinaController import adicionar_disciplina, remover_disciplina, atualizar_disciplina, buscar_disciplinas_por_usuario
+from controllers.disciplinaController import (
+    adicionar_disciplina,
+    remover_disciplina,
+    atualizar_disciplina,
+    listar_disciplinas_por_usuario
+)
 
 router = APIRouter(
     prefix="/disciplinas",
@@ -23,7 +28,7 @@ async def deletar_disciplina(disciplina_id: str):
 async def editar_disciplina(disciplina_id: str, dados_atualizados: dict = Body(...)):
     return await atualizar_disciplina(disciplina_id, dados_atualizados)
 
-# Rota para listar todas as disciplinas
+# Rota para listar todas as disciplinas de um usuário
 @router.get("/usuario/{user_id}")
-async def listar_disciplinas_por_usuario(user_id: str):
-    return await buscar_disciplinas_por_usuario(user_id)
+async def get_disciplinas_por_usuario(user_id: str):
+    return await listar_disciplinas_por_usuario(user_id)

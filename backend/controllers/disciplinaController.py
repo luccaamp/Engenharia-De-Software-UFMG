@@ -47,13 +47,18 @@ async def atualizar_disciplina(disciplina_id: str, dados_atualizados: dict):
 
     return {"msg": "Disciplina atualizada com sucesso."}
 
-# Função para listar todas as disciplinas de um usuário
-async def buscar_disciplinas_por_usuario(user_id: str):
+# Função para listar disciplinas de um usuário
+async def listar_disciplinas_por_usuario(user_id: str):
     db = get_db()
     if db is None:
-        raise HTTPException(status_code=500, detail="Erro ao conectar ao banco de dados.")
+        raise HTTPException(status_code=500, detail="Erro ao conectar com o banco de dados.")
 
     disciplinas_collection = db['disciplinas']
-    disciplinas = await disciplinas_collection.find({"user_id": user_id}).to_list(1000)
+
+    disciplinas_cursor = disciplinas_collection.find({"user_id": user_id})
+    disciplinas = await disciplinas_cursor.to_list(length=None)
+
+    for d in disciplinas:
+        d["_id"] = str(d["_id"])  # Converter ObjectId para string
 
     return disciplinas

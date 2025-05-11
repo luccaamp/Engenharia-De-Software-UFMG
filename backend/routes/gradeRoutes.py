@@ -1,6 +1,11 @@
 from fastapi import APIRouter
 from models.grade import Grade, GradeUpdate
-from controllers.gradeController import adicionar_grade, remover_grade, modificar_grade, buscar_notas_por_disciplina
+from controllers.gradeController import (
+    adicionar_grade,
+    remover_grade,
+    modificar_grade,
+    listar_notas_por_disciplina
+)
 
 router = APIRouter(
     prefix="/grades",
@@ -22,7 +27,7 @@ async def excluir_grade(disciplina_id: str, nota_id: str):
 async def atualizar_grade(disciplina_id: str, nota_id: str, grade_update: GradeUpdate):
     return await modificar_grade(disciplina_id, nota_id, grade_update)
 
-# Rota para listar todas as notas de uma disciplina
-@router.get("/{disciplina_id}/notas")
-async def listar_notas_disciplina(disciplina_id: str):
-    return await buscar_notas_por_disciplina(disciplina_id)
+# Rota para listar notas de uma disciplina de um usuário
+@router.get("/usuario/{user_id}/disciplina/{disciplina_id}")
+async def get_notas_por_disciplina(user_id: str, disciplina_id: str):
+    return await listar_notas_por_disciplina(user_id, disciplina_id)
