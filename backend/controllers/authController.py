@@ -555,11 +555,19 @@ async def change_email(
     if existing_user:
         raise HTTPException(status_code=400, detail="Este email já está em uso por outra conta.")
     
+    # Verificar se o novo email é diferente do atual
+    if request.new_email == current_user["email"]:
+        raise HTTPException(status_code=400, detail="O novo email deve ser diferente do email atual.")
+    
     # Atualizar o email
-    await db['DadosPessoais'].update_one(
+    result = await db['DadosPessoais'].update_one(
         {"email": current_user["email"]},
         {"$set": {"email": request.new_email}}
     )
+    
+    # Verificar se o documento foi realmente atualizado
+    if result.modified_count == 0:
+        raise HTTPException(status_code=400, detail="Falha ao atualizar o email.")
     
     # Criar novo token com o novo email
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
