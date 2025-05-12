@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
-function Estatisticas({ userId }) {
+function Estatisticas() {
   const [dadosGrafico, setDadosGrafico] = useState([]);
   const [maiorMedia, setMaiorMedia] = useState(null);
   const [menorMedia, setMenorMedia] = useState(null);
   const [mediaGeral, setMediaGeral] = useState(null);
 
+  const userId = localStorage.getItem("email");
   useEffect(() => {
     if (!userId) return;
 
@@ -49,28 +50,31 @@ function Estatisticas({ userId }) {
             }
           })
         );
-
+        console.log("Disciplinas carregadas:", disciplinasData);
         const disciplinasOrdenadas = ordenarDisciplinasPorSemestre(disciplinasComAtividades);
+        console.log("Disciplinas com atividades:", disciplinasComAtividades);
 
-        const mediasPorSemestre = {};
+        const totaisPorSemestre = {};
 
         disciplinasOrdenadas.forEach((disciplina) => {
           const semestre = disciplina.semestre;
           const notas = disciplina.atividades.map((a) => a.nota).filter((n) => typeof n === "number");
 
-          if (notas.length > 0) {
-            const media = notas.reduce((s, n) => s + n, 0) / notas.length;
-            if (!mediasPorSemestre[semestre]) {
-              mediasPorSemestre[semestre] = [];
-            }
-            mediasPorSemestre[semestre].push(media);
+          const soma = notas.reduce((s, n) => s + n, 0);
+
+          if (!totaisPorSemestre[semestre]) {
+            totaisPorSemestre[semestre] = { somaTotal: 0, numDisciplinas: 0 };
           }
+
+          totaisPorSemestre[semestre].somaTotal += soma;
+          totaisPorSemestre[semestre].numDisciplinas += 1;
         });
 
-        const dados = Object.entries(mediasPorSemestre).map(([semestre, medias]) => ({
-          semestre,
-          media: parseFloat((medias.reduce((s, n) => s + n, 0) / medias.length).toFixed(2)),
-        }));
+          const dados = Object.entries(totaisPorSemestre).map(([semestre, { somaTotal, numDisciplinas }]) => ({
+            semestre,
+            media: parseFloat((somaTotal / numDisciplinas).toFixed(2))
+          }));
+
 
         dados.sort((a, b) => {
           const [anoA, semA] = a.semestre.split('/').map(Number);
@@ -78,6 +82,8 @@ function Estatisticas({ userId }) {
           if (anoA !== anoB) return anoA - anoB;
           return semA - semB;
         });
+
+        console.log("Dados formatados para o gráfico:", dados);
 
         setDadosGrafico(dados);
 
@@ -90,6 +96,10 @@ function Estatisticas({ userId }) {
       } catch (error) {
         console.error("Erro na requisição de disciplinas:", error);
       }
+      console.log("Maior média:", maiorMedia);
+      console.log("Menor média:", menorMedia);
+      console.log("Média geral:", mediaGeral);
+
     };
 
     fetchDisciplinasComAtividades();
@@ -97,19 +107,18 @@ function Estatisticas({ userId }) {
 
   return (
     <div id="webcrumbs-Estatisticas">
-      <div className="w-[1200px] p-8 bg-gradient-to-br from-blue-50 to-gray-100 rounded-lg shadow-md">
+      <div className="w-[1200px] mt-1 p-1 bg-gradient-to-br from-blue-50 to-gray-100 rounded-lg shadow-md">
         <div className="bg-white p-6 rounded-xl shadow-sm transition-all duration-300 hover:shadow-lg">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">Semester Performance Analytics</h2>
-          <p className="text-gray-600 mb-6 text-lg">Average scores across academic semesters</p>
+          <h3 className="text-3xl font-bold mb-4 text-gray-800">Nota Semestral Global (NSG) </h3>
 
-          <div className="h-[550px] w-full mb-8">
+          <div className="h-[400px] w-full mb-8">
             <Chart
               type="line"
-              height={500}
+              height={380}
               width="100%"
               series={[
                 {
-                  name: "Average Score",
+                  name: "NSG",
                   data: dadosGrafico.map((d) => d.media)
                 }
               ]}
@@ -172,7 +181,7 @@ function Estatisticas({ userId }) {
                 },
                 xaxis: {
                   categories: dadosGrafico.map((d) => d.semestre),
-                  title: { text: 'Semester' }
+                  title: { text: 'Semestre' }
                 },
                 yaxis: {
                   title: { text: 'Average Score' },
@@ -198,12 +207,12 @@ function Estatisticas({ userId }) {
             />
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between gap-6 mt-10">
+          <div className="flex flex-row flex-wrap justify-between gap-6 mt-10">
             {maiorMedia && (
               <div className="bg-blue-50 p-4 rounded-lg transition-all duration-300 hover:shadow-md hover:bg-blue-100 flex-1">
-                <h3 className="font-medium text-lg mb-2">Highest Average</h3>
+                <h3 className="font-medium text-lg mb-2">Maior NSG</h3>
                 <div className="flex items-center">
-                  <span className="material-symbols-outlined text-primary-600 text-3xl mr-2">trending_up</span>
+                  <span className="material-symbols-outlined text-3xl mr-2" style={{ color: "#19cd2b" }}>trending_up</span>
                   <div>
                     <p className="text-2xl font-bold">{maiorMedia.media}</p>
                     <p className="text-gray-600 text-sm">{maiorMedia.semestre}</p>
@@ -213,9 +222,9 @@ function Estatisticas({ userId }) {
             )}
             {menorMedia && (
               <div className="bg-blue-50 p-6 rounded-lg transition-all duration-300 hover:shadow-md hover:bg-blue-100 flex-1 transform hover:-translate-y-1">
-                <h3 className="font-medium text-lg mb-2">Lowest Average</h3>
+                <h3 className="font-medium text-lg mb-2">Menor NSG</h3>
                 <div className="flex items-center">
-                  <span className="material-symbols-outlined text-orange-500 text-3xl mr-2">trending_down</span>
+                  <span className="material-symbols-outlined text-3xl mr-2" style={{ color: "#cd191c" }}>trending_down</span>
                   <div>
                     <p className="text-2xl font-bold">{menorMedia.media}</p>
                     <p className="text-gray-600 text-sm">{menorMedia.semestre}</p>
@@ -225,12 +234,12 @@ function Estatisticas({ userId }) {
             )}
             {mediaGeral && (
               <div className="bg-blue-50 p-6 rounded-lg transition-all duration-300 hover:shadow-md hover:bg-blue-100 flex-1 transform hover:-translate-y-1">
-                <h3 className="font-medium text-lg mb-2">Overall Average</h3>
+                <h3 className="font-medium text-lg mb-2">Média</h3>
                 <div className="flex items-center">
                   <span className="material-symbols-outlined text-teal-600 text-3xl mr-2">monitoring</span>
                   <div>
                     <p className="text-2xl font-bold">{mediaGeral}</p>
-                    <p className="text-gray-600 text-sm">All Semesters</p>
+                    <p className="text-gray-600 text-sm">Todos os semestres</p>
                   </div>
                 </div>
               </div>
