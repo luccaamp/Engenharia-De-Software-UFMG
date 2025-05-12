@@ -11,9 +11,9 @@ As principais features estão destacadas abaixo.
 
 - **Gerenciamento de Notas:**  Registro de notas por disciplina e visualização por meio de gráficos; Cálculo automático das estatísticas. 
 
-- **Controle de Tarefas e Atividades:** Criação e organização de tarefas por disciplina; Definição de prazos e ordenação de acordo com o vencimento; Marcação de tarefas como concluídas.  
+- **Controle de Tarefas e Atividades:** Criação e organização de tarefas por disciplina.  
 
-- **Dashboard Personalizado:** Resumo do desempenho acadêmico; Destaque para tarefas e atividades pendentes; Interface intuitiva e responsiva.  
+- **Dashboard Personalizado:** Resumo do desempenho acadêmico; Interface intuitiva e responsiva.  
 
 - **Perfil dos Usuários:** Perfis individuais para estudantes; Possibilidade de personalização do design da plataforma.  
 
