@@ -87,3 +87,6 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 | Implementar lógica para calcular média e evolução de notas | Leticia |
 | Integrar gráfico com backend para exibir dados | Lucca |
 | Testar a exibição correta dos gráficos com base nas notas | Lucca |
+
+## Diagrama UML
+![Diagrama UML](https://github.com/leticia-ribeirom/TP-Engenharia-De-Software/blob/main/Diagrama%20UML.png)
