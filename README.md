@@ -92,4 +92,4 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 ![Diagrama UML](https://github.com/leticia-ribeirom/TP-Engenharia-De-Software/blob/main/Diagrama%20UML.png)
 
 ## Diagrama de Atividades
-![Diagrama UML]([https://github.com/leticia-ribeirom/TP-Engenharia-De-Software/blob/main/Diagrama%20UML.png](https://github.com/leticia-ribeirom/TP-Engenharia-De-Software/blob/main/Diagrama%20de%20atividade%20(1).png))
+![Diagrama de Atividades](https://github.com/leticia-ribeirom/TP-Engenharia-De-Software/blob/main/Diagrama%20de%20atividade%20(1).png)
