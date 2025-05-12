@@ -59,7 +59,7 @@ function Principal() {
                         <h1 className="text-3xl font-bold text-gray-800">
                             {selectedPage === 'Disciplinas' && 'Bem-vindo, ' + username + '!'}
                             {selectedPage === 'Estatísticas' && 'Estatísticas'}
-                            {selectedPage === 'Configurações' && 'Configurações'}
+                            {selectedPage === 'Configurações' && 'Configurações da Conta'}
                         </h1>
                         <div className="flex items-center space-x-4">
                             <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all duration-200">
