@@ -13,7 +13,7 @@ As principais features estão destacadas abaixo.
 
 - **Dashboard Personalizado:** Resumo do desempenho acadêmico; Interface intuitiva e responsiva.  
 
-- **Perfil dos Usuários:** Perfis individuais para estudantes; Possibilidade de personalização do design da plataforma.  
+- **Perfil dos Usuários:** Perfis individuais para estudantes; Possibilidade de alteração de dados cadastrais.  
 
 ## Membros da Equipe e Responsabilidades
 - **Layla Raissa Silva Pereira:** Responsável pelo frontend da plataforma, garantindo uma experiência visual responsiva para os estudantes.
