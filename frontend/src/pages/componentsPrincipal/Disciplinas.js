@@ -21,7 +21,7 @@ function Disciplinas() {
     const [modoEdicaoAtividade, setModoEdicaoAtividade] = useState(false);
     const [indiceAtividadeEdicao, setIndiceAtividadeEdicao] = useState(null);
 
-    const userId = localStorage.getItem("user_id");
+    const userId = localStorage.getItem("email");
 
     useEffect(() => {
         if (!userId) return;
