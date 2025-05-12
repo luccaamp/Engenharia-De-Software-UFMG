@@ -184,7 +184,7 @@ function Estatisticas() {
                   title: { text: 'Semestre' }
                 },
                 yaxis: {
-                  title: { text: 'Average Score' },
+                  title: { text: 'NSG' },
                   min: 50,
                   max: 100
                 },
