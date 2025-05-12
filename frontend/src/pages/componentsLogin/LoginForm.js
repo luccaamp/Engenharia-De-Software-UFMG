@@ -25,6 +25,14 @@ function LoginForm({ setActiveTab }) {
         setErrorMessage(data.detail || 'Erro ao fazer login.');
       } else {
         console.log("Resposta da API:", data);
+
+        // Armazena o token no localStorage
+        if (data.access_token) {
+            localStorage.setItem('access_token', data.access_token);
+        } else {
+            console.error("Erro: access_token não retornado pela API");
+        }
+        
         if (data.username && data.email) {
             localStorage.setItem('username', data.username);
             localStorage.setItem('email', data.email);
