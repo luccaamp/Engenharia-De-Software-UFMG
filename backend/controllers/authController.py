@@ -21,6 +21,10 @@ from jose import JWTError, jwt
 from datetime import datetime, timedelta
 import secrets
 
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 
 # Configurações JWT
 SECRET_KEY = secrets.token_urlsafe(32)
@@ -550,26 +554,30 @@ async def change_email(
     if db is None:
         raise HTTPException(status_code=500, detail="Banco de dados não conectado.")
     
-    # Verificar se o novo email já está em uso
+    # 1️⃣ Verificar se a senha atual está correta
+    user_data = await db['DadosPessoais'].find_one({"email": current_user["email"]})
+    if not user_data or not pwd_context.verify(request.current_password, user_data["password"]):
+        raise HTTPException(status_code=400, detail="Senha atual incorreta.")
+    
+    # 2️⃣ Verificar se o novo email já está em uso
     existing_user = await db['DadosPessoais'].find_one({"email": request.new_email})
     if existing_user:
-        raise HTTPException(status_code=400, detail="Este email já está em uso por outra conta.")
+        raise HTTPException(status_code=400, detail="Este email já está em uso.")
     
-    # Verificar se o novo email é diferente do atual
+    # 3️⃣ Verificar se o novo email é diferente do atual
     if request.new_email == current_user["email"]:
-        raise HTTPException(status_code=400, detail="O novo email deve ser diferente do email atual.")
+        raise HTTPException(status_code=400, detail="O novo email deve ser diferente do atual.")
     
-    # Atualizar o email
+    # 4️⃣ Atualizar o email no banco de dados
     result = await db['DadosPessoais'].update_one(
         {"email": current_user["email"]},
         {"$set": {"email": request.new_email}}
     )
     
-    # Verificar se o documento foi realmente atualizado
     if result.modified_count == 0:
         raise HTTPException(status_code=400, detail="Falha ao atualizar o email.")
     
-    # Criar novo token com o novo email
+    # 5️⃣ Gerar novo token JWT com o novo email
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": request.new_email}, expires_delta=access_token_expires
