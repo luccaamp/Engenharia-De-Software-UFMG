@@ -42,12 +42,11 @@ function Disciplinas() {
                         try {
                             const res = await fetch(`http://localhost:8000/grades/usuario/${userId}/disciplina/${disciplina._id}`);
                             const atividades = res.ok ? await res.json() : [];
-                            console.log("Atividades recebidas:", atividades);
-                            
+                                                        
                             return {
                                 ...disciplina,
                                 atividades: atividades.map((a) => ({
-                                    id: a.grade_id,
+                                    id: a.id,
                                     nome: a.tipo,
                                     nota: a.valor,
                                 })), 
@@ -117,6 +116,14 @@ function Disciplinas() {
     };
 
     const selecionarDisciplina = (index) => {
+        // Fechar o modal se ele estiver aberto
+        if (mostrarModalDisciplina) {
+            setMostrarModalDisciplina(false);
+            setModoEdicaoDisciplina(false);
+            setIndiceDisciplinaEdicao(null);
+            setNovaDisciplinaNome("");
+            setNovaDisciplinaSemestre("");
+        }
         setDisciplinaSelecionada(index);
     };
 
@@ -391,7 +398,10 @@ function Disciplinas() {
                         <div className="flex items-center gap-2">
                             <button
                                 className="text-gray-600 hover:text-gray-800"
-                                onClick={() => setDisciplinaSelecionada(null)}
+                                onClick={() => {
+                                    setDisciplinaSelecionada(null)
+                                    setMostrarModalAtividade(false);
+                                }}
                             >
                                 <span className="material-symbols-outlined">arrow_back</span>
                             </button>
