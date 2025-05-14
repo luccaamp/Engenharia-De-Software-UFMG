@@ -89,7 +89,7 @@ Para o frontend da plataforma, será utilizado React.js combinando com **Tailwin
 | Testar a exibição correta dos gráficos com base nas notas | Lucca |
 
 ## Diagrama UML
-![Diagrama UML](https://github.com/leticia-ribeirom/TP-Engenharia-De-Software/blob/main/Diagrama%20UML.png)
+![Diagrama UML](https://github.com/leticia-ribeirom/TP-Engenharia-De-Software/blob/main/Classe%20UML.png)
 
 ## Diagrama de Atividades
 ![Diagrama de Atividades](https://github.com/leticia-ribeirom/TP-Engenharia-De-Software/blob/main/Diagrama%20de%20atividade%20(1).png)
