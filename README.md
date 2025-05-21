@@ -1,5 +1,5 @@
-﻿# Trabalho Prático da Disciplina de Engenharia de Software
-Departamento de Ciência da Computação – Universidade Federal de Minas Gerais (UFMG) Belo Horizonte – MG – Brazil 
+﻿# Trabalho Prático de Engenharia de Software - UFMG
+Trabalho prático da disciplina Engenharia de Software - 1º período de 2025 — Universidade Federal de Minas Gerais.
 
 ## Objetivo e Principais Features
 
