@@ -1,5 +1,5 @@
 ﻿# Trabalho Prático de Engenharia de Software - UFMG
-Trabalho prático da disciplina Engenharia de Software - 1º período de 2025 — Universidade Federal de Minas Gerais.
+Trabalho prático da disciplina Engenharia de Software do 1º período de 2025 — Universidade Federal de Minas Gerais.
 
 ## Objetivo e Principais Features
 
